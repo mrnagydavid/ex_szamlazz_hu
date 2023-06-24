@@ -29,7 +29,8 @@ defmodule ExSzamlazzHu.MixProject do
   defp deps do
     [
       {:ex_doc, "~> 0.29.4", only: :dev},
-      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.3", only: [:dev, :test], runtime: false}
     ]
   end
 
