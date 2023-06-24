@@ -28,7 +28,8 @@ defmodule ExSzamlazzHu.MixProject do
 
   defp deps do
     [
-      {:ex_doc, "~> 0.29.4", only: :dev}
+      {:ex_doc, "~> 0.29.4", only: :dev},
+      {:ecto_sql, "~> 3.10"}
     ]
   end
 
