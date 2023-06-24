@@ -16,7 +16,10 @@ defmodule ExSzamlazzHu.MixProject do
       start_permanent: Mix.env() == :prod,
       package: package(),
       deps: deps(),
-      docs: docs()
+      docs: docs(),
+      dialyzer: [
+        plt_file: {:no_warn, "priv/plts/project.plt"}
+      ]
     ]
   end
 
@@ -28,7 +31,9 @@ defmodule ExSzamlazzHu.MixProject do
 
   defp deps do
     [
-      {:ex_doc, "~> 0.29.4", only: :dev}
+      {:ex_doc, "~> 0.29.4", only: :dev},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.3", only: [:dev, :test], runtime: false}
     ]
   end
 
