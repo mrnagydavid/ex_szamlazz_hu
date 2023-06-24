@@ -22,13 +22,15 @@ defmodule ExSzamlazzHu.MixProject do
 
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger],
+      mod: {ExSzamlazzHu.Application, []}
     ]
   end
 
   defp deps do
     [
-      {:ex_doc, "~> 0.29.4", only: :dev}
+      {:ex_doc, "~> 0.29.4", only: :dev},
+      {:finch, "~> 0.16.0"}
     ]
   end
 
