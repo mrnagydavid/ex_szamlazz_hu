@@ -28,3 +28,5 @@ ex_szamlazz_hu-*.tar
 # Dialyxir PLT files (special placement for CI caching)
 /priv/plts/*.plt
 /priv/plts/*.plt.hash
+
+/.elixir_ls
