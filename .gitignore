@@ -24,3 +24,7 @@ ex_szamlazz_hu-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Dialyxir PLT files (special placement for CI caching)
+/priv/plts/*.plt
+/priv/plts/*.plt.hash

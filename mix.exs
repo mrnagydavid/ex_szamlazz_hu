@@ -16,7 +16,10 @@ defmodule ExSzamlazzHu.MixProject do
       start_permanent: Mix.env() == :prod,
       package: package(),
       deps: deps(),
-      docs: docs()
+      docs: docs(),
+      dialyzer: [
+        plt_file: {:no_warn, "priv/plts/project.plt"}
+      ]
     ]
   end
 
