@@ -8,14 +8,29 @@ jobs:
   build:
     name: Build and test
     runs-on: ubuntu-latest
-    container: elixir:1.14-alpine
 
     steps:
       - uses: actions/checkout@v3
+      - name: Set up Elixir
+        id: beam
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: '25.0.3'
+          elixir-version: '1.14.3'
       - name: Install Hex and Rebar
         run: mix local.hex --force && mix local.rebar --force
       - name: Install Alpine SDK
         run: apk add alpine-sdk
+      - name: Restore PLT cache
+        id: plt_cache
+        uses: actions/cache/restore@v3
+        with:
+          key: |
+            plt-${{ runner.os }}-${{ steps.beam.outputs.otp-version }}-${{ steps.beam.outputs.elixir-version }}-${{ hashFiles('**/mix.lock') }}
+          restore-keys: |
+            plt-${{ runner.os }}-${{ steps.beam.outputs.otp-version }}-${{ steps.beam.outputs.elixir-version }}-
+          path: |
+            priv/plts
       - name: Restore dependencies cache
         id: cache-deps
         uses: actions/cache@v3
@@ -43,12 +58,17 @@ jobs:
         run: mix deps.unlock --check-unused
       - name: Compile dependencies
         run: mix deps.compile
-      - name: Compile code
-        run: mix compile --warnings-as-errors
+      - name: Create PLTs
+        if: steps.plt_cache.outputs.cache-hit != 'true'
+        run: mix dialyzer --plt
       - name: Check formatting
         run: mix format --check-formatted
       - name: Check code consistency
         run: mix credo
+      - name: Run dialyzer
+        run: mix dialyzer --format github
+      - name: Compile code
+        run: mix compile --warnings-as-errors
       - name: Run tests
         run: mix test
 
