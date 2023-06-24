@@ -19,8 +19,6 @@ jobs:
           elixir-version: '1.14.3'
       - name: Install Hex and Rebar
         run: mix local.hex --force && mix local.rebar --force
-      - name: Install Alpine SDK
-        run: apk add alpine-sdk
       - name: Restore PLT cache
         id: plt_cache
         uses: actions/cache/restore@v3
