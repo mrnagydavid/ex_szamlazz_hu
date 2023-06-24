@@ -28,7 +28,8 @@ defmodule ExSzamlazzHu.MixProject do
 
   defp deps do
     [
-      {:ex_doc, "~> 0.29.4", only: :dev}
+      {:ex_doc, "~> 0.29.4", only: :dev},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
     ]
   end
 
