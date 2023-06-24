@@ -11,7 +11,7 @@ jobs:
     container: elixir:1.14-alpine
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install Hex and Rebar
         run: mix local.hex --force && mix local.rebar --force
       - name: Install Alpine SDK
