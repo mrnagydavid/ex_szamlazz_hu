@@ -23,16 +23,10 @@ defmodule ExSzamlazzHu.Factories.WaybillFactory do
 
   defp maybe_add_3pl(params) do
     if Enum.all?(@three_pls, &(params[&1] == nil)) do
-      add_any_3pl(params)
+      params
     else
       add_specific_3pl(params)
     end
-  end
-
-  defp add_any_3pl(params) do
-    Map.merge(params, %{
-      mpl: MPLFactory.get_params()
-    })
   end
 
   defp add_specific_3pl(params) do

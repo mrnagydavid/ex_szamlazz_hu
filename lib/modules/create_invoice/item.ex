@@ -54,14 +54,14 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Item do
     %{
       name: &is_binary(&1),
       identifier: &(is_nil(&1) or is_binary(&1)),
-      quantity: &is_number(&1),
+      quantity: &is_binary(&1),
       unit: &is_binary(&1),
       net_unit_price: &is_binary(&1),
       vat_key: &is_binary(&1),
-      margin_vat_base: &(is_nil(&1) or is_number(&1)),
-      net_value: &is_number(&1),
-      vat_value: &is_number(&1),
-      gross_value: &is_number(&1),
+      margin_vat_base: &(is_nil(&1) or is_binary(&1)),
+      net_value: &is_binary(&1),
+      vat_value: &is_binary(&1),
+      gross_value: &is_binary(&1),
       comment: &(is_nil(&1) or is_binary(&1)),
       item_ledger: &(is_nil(&1) || ItemLedger.validate(&1))
     }

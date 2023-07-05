@@ -68,7 +68,7 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.WaybillTest do
   end
 
   def params(custom_params \\ %{}) do
-    %{nope: "nope"}
+    %{nope: "nope", mpl: %{}}
     |> Map.merge(custom_params)
     |> WaybillFactory.get_params()
   end
