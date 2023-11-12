@@ -3,11 +3,11 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Seller do
 
   defstruct [
     :bank,
-    :bank_account_number,
-    :email_reply_to,
-    :email_subject,
-    :email_text,
-    :name_of_signatory
+    :bankszamlaszam,
+    :emailReplyto,
+    :emailTargy,
+    :emailSzoveg,
+    :alairoNeve
   ]
 
   @spec parse(map()) :: t() | nil
@@ -16,11 +16,11 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Seller do
   def parse(params) do
     %__MODULE__{
       bank: params[:bank],
-      bank_account_number: params[:bank_account_number],
-      email_reply_to: params[:email_reply_to],
-      email_subject: params[:email_subject],
-      email_text: params[:email_text],
-      name_of_signatory: params[:name_of_signatory]
+      bankszamlaszam: params[:bankszamlaszam],
+      emailReplyto: params[:emailReplyto],
+      emailTargy: params[:emailTargy],
+      emailSzoveg: params[:emailSzoveg],
+      alairoNeve: params[:alairoNeve]
     }
   end
 end

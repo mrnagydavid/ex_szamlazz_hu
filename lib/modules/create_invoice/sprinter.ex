@@ -2,12 +2,12 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.Sprinter do
   @type t :: %__MODULE__{}
 
   defstruct [
-    :identifier,
-    :sender_identifier,
-    :code_of_direction,
-    :package_identifier,
-    :barcode_postfix,
-    :delivery_deadline
+    :azonosito,
+    :feladokod,
+    :iranykod,
+    :csomagszam,
+    :vonalkodPostfix,
+    :szallitasiIdo
   ]
 
   @spec parse(map()) :: t() | nil
@@ -15,12 +15,12 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.Sprinter do
 
   def parse(params) do
     %__MODULE__{
-      identifier: params[:identifier],
-      sender_identifier: params[:sender_identifier],
-      code_of_direction: params[:code_of_direction],
-      package_identifier: params[:package_identifier],
-      barcode_postfix: params[:barcode_postfix],
-      delivery_deadline: params[:delivery_deadline]
+      azonosito: params[:azonosito],
+      feladokod: params[:feladokod],
+      iranykod: params[:iranykod],
+      csomagszam: params[:csomagszam],
+      vonalkodPostfix: params[:vonalkodPostfix],
+      szallitasiIdo: params[:szallitasiIdo]
     }
   end
 end

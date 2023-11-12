@@ -17,10 +17,10 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.XMLBuilder do
       xsi:schemaLocation="http://www.szamlazz.hu/xmlszamla https://www.szamlazz.hu/szamla/docs/xsds/agent/xmlszamla.xsd"
     >
       <beallitasok>
-        <szamlaagentkulcs>#{invoice_data.agent_key}</szamlaagentkulcs>
-        <eszamla>true</eszamla>
-        <szamlaLetoltes>false</szamlaLetoltes>
-        <valaszVerzio>1</valaszVerzio>
+        <szamlaagentkulcs>#{invoice_data.settings.agent_key}</szamlaagentkulcs>
+        <eszamla>#{invoice_data.settings.is_e_invoice}</eszamla>
+        <szamlaLetoltes>#{invoice_data.settings.download_invoice}</szamlaLetoltes>
+        <valaszVerzio>#{invoice_data.settings.response_version}</valaszVerzio>
       </beallitasok>
       #{build_header(invoice_data)}
       <elado></elado>
@@ -33,15 +33,32 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.XMLBuilder do
   defp build_header(%InvoiceData{} = invoice_data) do
     """
       <fejlec>
+        <keltDatum>2020-01-20</keltDatum>
         <teljesitesDatum>#{invoice_data.completion_date}</teljesitesDatum>
         <fizetesiHataridoDatum>#{invoice_data.payment_deadline}</fizetesiHataridoDatum>
         <fizmod>#{invoice_data.method_of_payment}</fizmod>
         <penznem>#{invoice_data.currency}</penznem>
         <szamlaNyelve>#{invoice_data.language}</szamlaNyelve>
         <megjegyzes>#{invoice_data.comment}</megjegyzes>
+        <arfolyamBank>MNB</arfolyamBank>
+        <arfolyam>0.0</arfolyam>
         <rendelesSzam>#{invoice_data.order_id}</rendelesSzam>
+        <dijbekeroSzamlaszam></dijbekeroSzamlaszam>
+        <elolegszamla>false</elolegszamla>
+        <vegszamla>false</vegszamla>
+        <elolegSzamlaszam></elolegSzamlaszam>
+        <helyesbitoszamla>false</helyesbitoszamla>
+        <helyesbitettSzamlaszam></helyesbitettSzamlaszam>
         <dijbekero>#{invoice_data.is_proforma}</dijbekero>
+        <szallitolevel></szallitolevel>
+        <logoExtra></logoExtra>
+        <szamlaszamElotag></szamlaszamElotag>
+        <fizetendoKorrekcio></fizetendoKorrekcio>
         <fizetve>#{invoice_data.is_paid}</fizetve>
+        <arresAfa></arresAfa>
+        <eusAfa></eusAfa>
+        <szamlaSablon></szamlaSablon>
+        <elonezetpdf></elonezetpdf>
       </fejlec>
     """
   end

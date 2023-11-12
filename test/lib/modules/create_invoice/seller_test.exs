@@ -7,11 +7,11 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.SellerTest do
     test "should parse a valid Seller" do
       assert Seller.parse(params()) == %Seller{
                bank: "bank",
-               bank_account_number: "bank_account_number",
-               email_reply_to: "email_reply_to",
-               email_subject: "email_subject",
-               email_text: "email_text",
-               name_of_signatory: "name_of_signatory"
+               bankszamlaszam: "bank_account_number",
+               emailReplyto: "email_reply_to",
+               emailTargy: "email_subject",
+               emailSzoveg: "email_text",
+               alairoNeve: "name_of_signatory"
              }
     end
 

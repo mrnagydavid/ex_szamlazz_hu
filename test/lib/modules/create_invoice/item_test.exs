@@ -6,18 +6,18 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.ItemTest do
   describe "parse/1" do
     test "should parse a valid Item" do
       assert Item.parse(params()) == %Item{
-               name: "name",
-               identifier: "identifier",
-               quantity: "1.5",
-               unit: "unit",
-               net_unit_price: "net_unit_price",
-               vat_key: "27",
-               margin_vat_base: "margin_vat_base",
-               net_value: "100",
-               vat_value: "27",
-               gross_value: "127",
-               comment: "comment",
-               item_ledger: nil
+               megnevezes: "name",
+               azonosito: "identifier",
+               mennyiseg: "1.5",
+               mennyisegiEgyseg: "unit",
+               nettoEgysegar: "net_unit_price",
+               afakulcs: "27",
+               arresAfaAlap: "margin_vat_base",
+               nettoErtek: "100",
+               afaErtek: "27",
+               bruttoErtek: "127",
+               megjegyzes: "comment",
+               tetelFokonyv: nil
              }
     end
 

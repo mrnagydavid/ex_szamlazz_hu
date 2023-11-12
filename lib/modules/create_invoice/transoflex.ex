@@ -2,10 +2,10 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.Transoflex do
   @type t :: %__MODULE__{}
 
   defstruct [
-    :identifier,
-    :shipment_id,
-    :package_identifier,
-    :country_code,
+    :azonosito,
+    :shipmentID,
+    :csomagszam,
+    :countryCode,
     :zip,
     :service
   ]
@@ -15,10 +15,10 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.Transoflex do
 
   def parse(params) do
     %__MODULE__{
-      identifier: params[:identifier],
-      shipment_id: params[:shipment_id],
-      package_identifier: params[:package_identifier],
-      country_code: params[:country_code],
+      azonosito: params[:azonosito],
+      shipmentID: params[:shipmentID],
+      csomagszam: params[:csomagszam],
+      countryCode: params[:countryCode],
       zip: params[:zip],
       service: params[:service]
     }

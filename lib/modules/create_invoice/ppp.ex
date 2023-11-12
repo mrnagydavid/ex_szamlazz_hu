@@ -2,8 +2,8 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.PPP do
   @type t :: %__MODULE__{}
 
   defstruct [
-    :barcode_prefix,
-    :barcode_postfix
+    :vonalkodPrefix,
+    :vonalkodPostfix
   ]
 
   @spec parse(map()) :: t() | nil
@@ -11,8 +11,8 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.PPP do
 
   def parse(params) do
     %__MODULE__{
-      barcode_prefix: params[:barcode_prefix],
-      barcode_postfix: params[:barcode_postfix]
+      vonalkodPrefix: params[:vonalkodPrefix],
+      vonalkodPostfix: params[:vonalkodPostfix]
     }
   end
 end

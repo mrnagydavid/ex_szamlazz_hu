@@ -8,11 +8,11 @@ defmodule ExSzamlazzHu.Factories.WaybillFactory do
 
   def get_params(params \\ %{}) do
     %{
-      destination: "destination",
-      three_pl_provider: "three_pl_provider",
-      barcode: "barcode",
-      comment: "comment",
-      transoflex: nil,
+      uticel: "destination",
+      futarSzolgalat: "three_pl_provider",
+      vonalkod: "barcode",
+      megjegyzes: "comment",
+      tof: nil,
       ppp: nil,
       sprinter: nil,
       mpl: nil

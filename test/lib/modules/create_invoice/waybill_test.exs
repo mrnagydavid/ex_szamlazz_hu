@@ -7,19 +7,19 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.WaybillTest do
   describe "parse/1" do
     test "should parse a valid waybill" do
       assert Waybill.parse(params(%{mpl: %{}})) == %Waybill{
-               destination: "destination",
-               three_pl_provider: "three_pl_provider",
-               barcode: "barcode",
-               comment: "comment",
+               uticel: "destination",
+               futarSzolgalat: "three_pl_provider",
+               vonalkod: "barcode",
+               megjegyzes: "comment",
+               tof: nil,
                ppp: nil,
                sprinter: nil,
-               transoflex: nil,
                mpl: %MPL{
-                 buyer_identifier: "buyer_identifier",
-                 barcode: "barcode",
-                 weight: "weight",
-                 extra_services: "extra_services",
-                 value_statement: "value_statement"
+                 vevokod: "buyer_identifier",
+                 vonalkod: "barcode",
+                 tomeg: "weight",
+                 kulonszolgaltatasok: "extra_services",
+                 erteknyilvanitas: "value_statement"
                }
              }
     end

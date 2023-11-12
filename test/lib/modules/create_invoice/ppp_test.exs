@@ -6,8 +6,8 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.PPPTest do
   describe "parse/1" do
     test "should parse a valid waybill for PPP" do
       assert PPP.parse(params()) == %PPP{
-               barcode_prefix: "barcode_prefix",
-               barcode_postfix: "barcode_postfix"
+               vonalkodPrefix: "barcode_prefix",
+               vonalkodPostfix: "barcode_postfix"
              }
     end
 

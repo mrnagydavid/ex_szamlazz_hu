@@ -6,11 +6,12 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.ItemLedgerTest do
   describe "parse/1" do
     test "should parse a valid ItemLedger" do
       assert ItemLedger.parse(params()) == %ItemLedger{
-               economic_event: "economic_event",
-               economic_event_vat: "economic_event_vat",
-               income_ledger_number: "income_ledger_number",
-               settlement_date_from: "settlement_date_from",
-               settlement_date_to: "settlement_date_to"
+               gazdasagiEsem: "economic_event",
+               gazdasagiEsemAfa: "economic_event_vat",
+               arbevetelFokonyviSzam: "income_ledger_number",
+               afaFokonyviSzam: "vat_ledger_number",
+               elszDatumTol: "settlement_date_from",
+               elszDatumIg: "settlement_date_to"
              }
     end
 

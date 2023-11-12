@@ -6,11 +6,11 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.MPLTest do
   describe "parse/1" do
     test "should parse a valid waybill for MPL" do
       assert MPL.parse(params()) == %MPL{
-               buyer_identifier: "buyer_identifier",
-               barcode: "barcode",
-               weight: "weight",
-               extra_services: "extra_services",
-               value_statement: "value_statement"
+               vevokod: "buyer_identifier",
+               vonalkod: "barcode",
+               tomeg: "weight",
+               kulonszolgaltatasok: "extra_services",
+               erteknyilvanitas: "value_statement"
              }
     end
 

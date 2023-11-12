@@ -6,10 +6,10 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.TransoflexTest do
   describe "parse/1" do
     test "should parse a valid waybill for Transoflex" do
       assert Transoflex.parse(params()) == %Transoflex{
-               identifier: "identifier",
-               shipment_id: "shipment_id",
-               package_identifier: "package_identifier",
-               country_code: "country_code",
+               azonosito: "identifier",
+               shipmentID: "shipment_id",
+               csomagszam: "package_identifier",
+               countryCode: "country_code",
                zip: "zip",
                service: "service"
              }

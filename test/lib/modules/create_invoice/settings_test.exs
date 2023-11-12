@@ -6,17 +6,17 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.SettingsTest do
   describe "parse/1" do
     test "should parse a valid Settings" do
       assert Settings.parse(params()) == %Settings{
-               user: "user",
-               password: "password",
-               agent_key: "agent_key",
-               is_e_invoice: true,
-               download_invoice: false,
-               download_invoice_number_of_copies: 0,
-               response_version: 1,
+               felhasznalo: "user",
+               jelszo: "password",
+               szamlaagentkulcs: "agent_key",
+               eszamla: true,
+               szamlaLetoltes: false,
+               szamlaLetoltesPld: 0,
+               valaszVerzio: 1,
                aggregator: "aggregator",
                guardian: false,
-               article_identifier_invoice: false,
-               external_invoice_identifier: "external_invoice_identifier"
+               cikkazoninvoice: false,
+               szamlaKulsoAzon: "external_invoice_identifier"
              }
     end
 

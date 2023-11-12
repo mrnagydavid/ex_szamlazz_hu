@@ -4,28 +4,28 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Item do
   @type t() :: %__MODULE__{}
 
   @enforce_keys [
-    :name,
-    :quantity,
-    :unit,
-    :net_unit_price,
-    :vat_key,
-    :net_value,
-    :vat_value,
-    :gross_value
+    :megnevezes,
+    :mennyiseg,
+    :mennyisegiEgyseg,
+    :nettoEgysegar,
+    :afakulcs,
+    :nettoErtek,
+    :afaErtek,
+    :bruttoErtek
   ]
   defstruct [
-    :name,
-    :identifier,
-    :quantity,
-    :unit,
-    :net_unit_price,
-    :vat_key,
-    :margin_vat_base,
-    :net_value,
-    :vat_value,
-    :gross_value,
-    :comment,
-    :item_ledger
+    :megnevezes,
+    :azonosito,
+    :mennyiseg,
+    :mennyisegiEgyseg,
+    :nettoEgysegar,
+    :afakulcs,
+    :arresAfaAlap,
+    :nettoErtek,
+    :afaErtek,
+    :bruttoErtek,
+    :megjegyzes,
+    :tetelFokonyv
   ]
 
   @spec parse(map()) :: t() | nil
@@ -33,18 +33,18 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Item do
 
   def parse(params) do
     %__MODULE__{
-      name: params[:name],
-      identifier: params[:identifier],
-      quantity: params[:quantity],
-      unit: params[:unit],
-      net_unit_price: params[:net_unit_price],
-      vat_key: params[:vat_key],
-      margin_vat_base: params[:margin_vat_base],
-      net_value: params[:net_value],
-      vat_value: params[:vat_value],
-      gross_value: params[:gross_value],
-      comment: params[:comment],
-      item_ledger: ItemLedger.parse(params[:item_ledger])
+      megnevezes: params[:megnevezes],
+      azonosito: params[:azonosito],
+      mennyiseg: params[:mennyiseg],
+      mennyisegiEgyseg: params[:mennyisegiEgyseg],
+      nettoEgysegar: params[:nettoEgysegar],
+      afakulcs: params[:afakulcs],
+      arresAfaAlap: params[:arresAfaAlap],
+      nettoErtek: params[:nettoErtek],
+      afaErtek: params[:afaErtek],
+      bruttoErtek: params[:bruttoErtek],
+      megjegyzes: params[:megjegyzes],
+      tetelFokonyv: ItemLedger.parse(params[:tetelFokonyv])
     }
   end
 end
