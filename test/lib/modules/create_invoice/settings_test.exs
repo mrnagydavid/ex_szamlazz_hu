@@ -9,7 +9,7 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.SettingsTest do
                user: "user",
                password: "password",
                agent_key: "agent_key",
-               e_invoice: true,
+               is_e_invoice: true,
                download_invoice: false,
                download_invoice_number_of_copies: 0,
                response_version: 1,
