@@ -5,7 +5,6 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.InvoiceData do
   alias ExSzamlazzHu.Modules.CreateInvoice.Buyer
   alias ExSzamlazzHu.Modules.CreateInvoice.Waybill
   alias ExSzamlazzHu.Modules.CreateInvoice.Item
-  alias ExSzamlazzHu.Utils.Validator
 
   @type t :: %__MODULE__{}
 
@@ -28,17 +27,5 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.InvoiceData do
       waybill: Waybill.parse(params[:waybill]),
       items: Enum.map(params[:items] || [], &Item.parse(&1))
     }
-  end
-
-  def validate(struct) do
-    %{
-      settings: &Settings.validate/1,
-      header: &Header.validate(&1),
-      seller: &Seller.validate(&1),
-      buyer: &Buyer.validate(&1),
-      waybill: &(is_nil(&1) || Waybill.validate(&1)),
-      items: &Item.validate(&1)
-    }
-    |> Validator.validate(struct)
   end
 end

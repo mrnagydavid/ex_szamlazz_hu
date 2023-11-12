@@ -20,34 +20,6 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.SprinterTest do
     end
   end
 
-  describe "validate/1" do
-    test "should validate a valid waybill for Sprinter" do
-      struct = Sprinter.parse(params())
-
-      assert Sprinter.validate(struct) == :ok
-    end
-
-    test "should validate an invalid waybill for Sprinter" do
-      assert Sprinter.validate(%{
-               identifier: 0,
-               sender_identifier: 0,
-               code_of_direction: 0,
-               package_identifier: 0,
-               barcode_postfix: 0,
-               delivery_deadline: 0
-             }) ==
-               {:error,
-                %{
-                  identifier: :invalid,
-                  sender_identifier: :invalid,
-                  code_of_direction: :invalid,
-                  package_identifier: :invalid,
-                  barcode_postfix: :invalid,
-                  delivery_deadline: :invalid
-                }}
-    end
-  end
-
   def params() do
     SprinterFactory.get_params(%{nope: "nope"})
   end

@@ -1,6 +1,4 @@
 defmodule ExSzamlazzHu.Modules.CreateInvoice.Header do
-  alias ExSzamlazzHu.Utils.Validator
-
   @type t :: %__MODULE__{}
 
   @enforce_keys [
@@ -33,8 +31,8 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Header do
     :invoice_prefix,
     :correction_of_payable,
     :is_paid,
-    :vat_of_margin,
-    :european_vat,
+    :is_vat_of_margin,
+    :is_european_vat,
     :invoice_draft,
     :preview_pdf
   ]
@@ -66,44 +64,11 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Header do
       invoice_prefix: params[:invoice_prefix],
       correction_of_payable: params[:correction_of_payable],
       is_paid: params[:is_paid],
-      vat_of_margin: params[:vat_of_margin],
-      european_vat: params[:european_vat],
+      is_vat_of_margin: params[:is_vat_of_margin],
+      is_european_vat: params[:is_european_vat],
       invoice_draft: params[:invoice_draft],
       preview_pdf: params[:preview_pdf]
     }
-  end
-
-  @spec validate(t()) :: boolean()
-  def validate(struct) do
-    %{
-      date_of_issue: &(is_nil(&1) or is_binary(&1)),
-      date_of_completion: &is_binary(&1),
-      payment_deadline: &is_binary(&1),
-      payment_method: &is_binary(&1),
-      currency: &is_binary(&1),
-      language: &is_binary(&1),
-      comment: &(is_nil(&1) or is_binary(&1)),
-      exchange_rate_bank: &(is_nil(&1) or is_binary(&1)),
-      exchange_rate: &(is_nil(&1) or is_integer(&1) or is_float(&1)),
-      order_identifier: &(is_nil(&1) or is_binary(&1)),
-      fee_request_identifier: &(is_nil(&1) or is_binary(&1)),
-      is_advance_invoice: &(is_nil(&1) or is_boolean(&1)),
-      is_final_invoice: &(is_nil(&1) or is_boolean(&1)),
-      advance_invoice_identifier: &(is_nil(&1) or is_binary(&1)),
-      is_correction_invoice: &(is_nil(&1) or is_boolean(&1)),
-      identifier_of_corrected_invoice: &(is_nil(&1) or is_binary(&1)),
-      is_fee_request: &(is_nil(&1) or is_boolean(&1)),
-      is_waybill: &(is_nil(&1) or is_boolean(&1)),
-      logo_extra: &(is_nil(&1) or is_binary(&1)),
-      invoice_prefix: &(is_nil(&1) or is_binary(&1)),
-      correction_of_payable: &(is_nil(&1) or is_integer(&1) or is_float(&1)),
-      is_paid: &(is_nil(&1) or is_boolean(&1)),
-      is_var_of_margin: &(is_nil(&1) or is_boolean(&1)),
-      is_european_vat: &(is_nil(&1) or is_boolean(&1)),
-      invoice_draft: &(is_nil(&1) or is_binary(&1)),
-      preview_pdf: &(is_nil(&1) or is_boolean(&1))
-    }
-    |> Validator.validate(struct)
   end
 
   defp maybe_parse_date(%Date{} = value), do: Date.to_iso8601(value)

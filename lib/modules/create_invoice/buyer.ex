@@ -1,6 +1,5 @@
 defmodule ExSzamlazzHu.Modules.CreateInvoice.Buyer do
   alias ExSzamlazzHu.Modules.CreateInvoice.BuyerLedger
-  alias ExSzamlazzHu.Utils.Validator
 
   @type t :: %__MODULE__{}
 
@@ -61,33 +60,5 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Buyer do
       phone_number: params[:phone_number],
       comment: params[:comment]
     }
-  end
-
-  @spec validate(t()) :: boolean()
-  def validate(struct) do
-    %{
-      name: &is_binary(&1),
-      country: &(is_nil(&1) or is_binary(&1)),
-      zip_code: &is_binary(&1),
-      city: &is_binary(&1),
-      address: &is_binary(&1),
-      email: &(is_nil(&1) or is_binary(&1)),
-      send_email: &(is_nil(&1) or is_boolean(&1)),
-      tax_subject: &(is_nil(&1) or is_integer(&1)),
-      tax_identifier: &(is_nil(&1) or is_binary(&1)),
-      group_identifier: &(is_nil(&1) or is_binary(&1)),
-      eu_tax_identifier: &(is_nil(&1) or is_binary(&1)),
-      mailing_name: &(is_nil(&1) or is_binary(&1)),
-      mailing_country: &(is_nil(&1) or is_binary(&1)),
-      mailing_zip: &(is_nil(&1) or is_binary(&1)),
-      mailing_city: &(is_nil(&1) or is_binary(&1)),
-      mailing_address: &(is_nil(&1) or is_binary(&1)),
-      buyer_ledger: &(is_nil(&1) || BuyerLedger.validate(&1)),
-      identifier: &(is_nil(&1) or is_binary(&1)),
-      name_of_signatory: &(is_nil(&1) or is_binary(&1)),
-      phone_number: &(is_nil(&1) or is_binary(&1)),
-      comment: &(is_nil(&1) or is_binary(&1))
-    }
-    |> Validator.validate(struct)
   end
 end

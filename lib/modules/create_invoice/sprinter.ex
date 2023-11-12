@@ -1,6 +1,4 @@
 defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.Sprinter do
-  alias ExSzamlazzHu.Utils.Validator
-
   @type t :: %__MODULE__{}
 
   defstruct [
@@ -24,18 +22,5 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.Sprinter do
       barcode_postfix: params[:barcode_postfix],
       delivery_deadline: params[:delivery_deadline]
     }
-  end
-
-  @spec validate(t()) :: boolean()
-  def validate(struct) do
-    %{
-      identifier: &(is_nil(&1) or is_binary(&1)),
-      sender_identifier: &(is_nil(&1) or is_binary(&1)),
-      code_of_direction: &(is_nil(&1) or is_binary(&1)),
-      package_identifier: &(is_nil(&1) or is_binary(&1)),
-      barcode_postfix: &(is_nil(&1) or is_binary(&1)),
-      delivery_deadline: &(is_nil(&1) or is_binary(&1))
-    }
-    |> Validator.validate(struct)
   end
 end

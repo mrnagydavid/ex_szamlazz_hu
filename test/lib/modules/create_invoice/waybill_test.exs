@@ -29,44 +29,6 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.WaybillTest do
     end
   end
 
-  describe "validate/1" do
-    test "should validate a valid waybill" do
-      struct = Waybill.parse(params())
-
-      assert Waybill.validate(struct) == :ok
-    end
-
-    test "should validate an invalid waybill" do
-      assert Waybill.validate(%{
-               destination: 0,
-               three_pl_provider: 0,
-               barcode: 0,
-               comment: 0,
-               mpl: %{
-                 buyer_identifier: 0,
-                 barcode: 0,
-                 weight: 0,
-                 extra_services: 0,
-                 value_statement: 0
-               }
-             }) ==
-               {:error,
-                %{
-                  destination: :invalid,
-                  three_pl_provider: :invalid,
-                  barcode: :invalid,
-                  comment: :invalid,
-                  mpl: %{
-                    buyer_identifier: :invalid,
-                    barcode: :invalid,
-                    weight: :invalid,
-                    extra_services: :invalid,
-                    value_statement: :invalid
-                  }
-                }}
-    end
-  end
-
   def params(custom_params \\ %{}) do
     %{nope: "nope", mpl: %{}}
     |> Map.merge(custom_params)

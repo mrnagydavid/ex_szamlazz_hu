@@ -20,34 +20,6 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.TransoflexTest do
     end
   end
 
-  describe "validate/1" do
-    test "should validate a valid waybill for Transoflex" do
-      struct = Transoflex.parse(params())
-
-      assert Transoflex.validate(struct) == :ok
-    end
-
-    test "should validate an invalid waybill for Transoflex" do
-      assert Transoflex.validate(%{
-               identifier: 0,
-               shipment_id: 0,
-               package_identifier: 0,
-               country_code: 0,
-               zip: 0,
-               service: 0
-             }) ==
-               {:error,
-                %{
-                  identifier: :invalid,
-                  shipment_id: :invalid,
-                  package_identifier: :invalid,
-                  country_code: :invalid,
-                  zip: :invalid,
-                  service: :invalid
-                }}
-    end
-  end
-
   def params() do
     TransoflexFactory.get_params(%{nope: "nope"})
   end
