@@ -1,5 +1,6 @@
 defmodule ExSzamlazzHu.Modules.CreateInvoice.Customer do
   alias ExSzamlazzHu.Modules.CreateInvoice.CustomerLedger
+  alias ExSzamlazzHu.Utils.StructToXML
 
   @type t :: %__MODULE__{}
 
@@ -37,28 +38,41 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Customer do
   def parse(nil), do: nil
 
   def parse(params) do
-    %__MODULE__{
-      nev: params[:nev],
-      orszag: params[:orszag],
-      irsz: params[:irsz],
-      telepules: params[:telepules],
-      cim: params[:cim],
-      email: params[:email],
-      sendEmail: params[:sendEmail],
-      adoalany: params[:adoalany],
-      adoszam: params[:adoszam],
-      csoportazonosito: params[:csoportazonosito],
-      adoszamEU: params[:adoszamEU],
-      postazasiNev: params[:postazasiNev],
-      postazasiOrszag: params[:postazasiOrszag],
-      postazasiIrsz: params[:postazasiIrsz],
-      postazasiTelepules: params[:postazasiTelepules],
-      postazasiCim: params[:postazasiCim],
-      vevoFokonyv: CustomerLedger.parse(params[:vevoFokonyv]),
-      azonosito: params[:azonosito],
-      alairoNeve: params[:alairoNeve],
-      telefonszam: params[:telefonszam],
-      megjegyzes: params[:megjegyzes]
-    }
+    __MODULE__
+    |> struct(Map.drop(params, [:vevoFokonyv]))
+    |> Map.put(:vevoFokonyv, CustomerLedger.parse(params[:vevoFokonyv]))
+  end
+
+  @spec to_xml(t()) :: String.t()
+  def to_xml(%__MODULE__{} = module) do
+    tags = [
+      nev: &"<nev>#{&1}</nev>",
+      orszag: &"<orszag>#{&1}</orszag>",
+      irsz: &"<irsz>#{&1}</irsz>",
+      telepules: &"<telepules>#{&1}</telepules>",
+      cim: &"<cim>#{&1}</cim>",
+      email: &"<email>#{&1}</email>",
+      sendEmail: &"<sendEmail>#{&1}</sendEmail>",
+      adoalany: &"<adoalany>#{&1}</adoalany>",
+      adoszam: &"<adoszam>#{&1}</adoszam>",
+      csoportazonosito: &"<csoportazonosito>#{&1}</csoportazonosito>",
+      adoszamEU: &"<adoszamEU>#{&1}</adoszamEU>",
+      postazasiNev: &"<postazasiNev>#{&1}</postazasiNev>",
+      postazasiOrszag: &"<postazasiOrszag>#{&1}</postazasiOrszag>",
+      postazasiIrsz: &"<postazasiIrsz>#{&1}</postazasiIrsz>",
+      postazasiTelepules: &"<postazasiTelepules>#{&1}</postazasiTelepules>",
+      postazasiCim: &"<postazasiCim>#{&1}</postazasiCim>",
+      vevoFokonyv: &CustomerLedger.to_xml(&1),
+      azonosito: &"<azonosito>#{&1}</azonosito>",
+      alairoNeve: &"<alairoNeve>#{&1}</alairoNeve>",
+      telefonszam: &"<telefonszam>#{&1}</telefonszam>",
+      megjegyzes: &"<megjegyzes>#{&1}</megjegyzes>"
+    ]
+
+    """
+    <vevo>
+    #{StructToXML.run(module, tags)}
+    </vevo>
+    """
   end
 end

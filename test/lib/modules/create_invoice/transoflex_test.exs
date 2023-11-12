@@ -20,6 +20,24 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.TransoflexTest do
     end
   end
 
+  describe "to_xml/1" do
+    test "should return a valid XML" do
+      assert params()
+             |> Transoflex.parse()
+             |> Transoflex.to_xml() ==
+               """
+               <tof>
+               <azonosito>identifier</azonosito>
+               <shipmentID>shipment_id</shipmentID>
+               <csomagszam>package_identifier</csomagszam>
+               <countryCode>country_code</countryCode>
+               <zip>zip</zip>
+               <service>service</service>
+               </tof>
+               """
+    end
+  end
+
   def params() do
     TransoflexFactory.get_params(%{nope: "nope"})
   end

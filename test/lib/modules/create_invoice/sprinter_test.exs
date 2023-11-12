@@ -20,6 +20,24 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.SprinterTest do
     end
   end
 
+  describe "to_xml/1" do
+    test "should return a valid XML" do
+      assert params()
+             |> Sprinter.parse()
+             |> Sprinter.to_xml() ==
+               """
+               <sprinter>
+               <azonosito>identifier</azonosito>
+               <feladokod>sender_identifier</feladokod>
+               <iranykod>code_of_direction</iranykod>
+               <csomagszam>package_identifier</csomagszam>
+               <vonalkodPostfix>barcode_postfix</vonalkodPostfix>
+               <szallitasiIdo>delivery_deadline</szallitasiIdo>
+               </sprinter>
+               """
+    end
+  end
+
   def params() do
     SprinterFactory.get_params(%{nope: "nope"})
   end

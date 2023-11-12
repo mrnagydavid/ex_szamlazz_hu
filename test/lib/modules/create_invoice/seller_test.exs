@@ -20,6 +20,24 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.SellerTest do
     end
   end
 
+  describe "to_xml/1" do
+    test "should return a valid XML" do
+      assert params()
+             |> Seller.parse()
+             |> Seller.to_xml() ==
+               """
+               <elado>
+               <bank>bank</bank>
+               <bankszamlaszam>bank_account_number</bankszamlaszam>
+               <emailReplyto>email_reply_to</emailReplyto>
+               <emailTargy>email_subject</emailTargy>
+               <emailSzoveg>email_text</emailSzoveg>
+               <alairoNeve>name_of_signatory</alairoNeve>
+               </elado>
+               """
+    end
+  end
+
   def params() do
     SellerFactory.get_params(%{nope: "nope"})
   end

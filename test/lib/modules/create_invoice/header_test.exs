@@ -40,7 +40,49 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.HeaderTest do
     end
   end
 
-  def params() do
-    HeaderFactory.get_params(%{nope: "nope"})
+  describe "to_xml/1" do
+    test "should return a valid XML" do
+      assert %{
+               elolegSzamlaszam: "proforma_invoice_identifier",
+               helyesbitettSzamlaszam: "corrected_invoice_identifier"
+             }
+             |> params()
+             |> Header.parse()
+             |> Header.to_xml() ==
+               """
+               <fejlec>
+               <keltDatum>1997-08-29</keltDatum>
+               <teljesitesDatum>1997-08-29</teljesitesDatum>
+               <fizetesiHataridoDatum>1997-08-29</fizetesiHataridoDatum>
+               <fizmod>payment_method</fizmod>
+               <penznem>HUF</penznem>
+               <szamlaNyelve>en</szamlaNyelve>
+               <megjegyzes>comment</megjegyzes>
+               <arfolyamBank>exchange_rate_bank</arfolyamBank>
+               <arfolyam>123.4</arfolyam>
+               <rendelesSzam>order_identifier</rendelesSzam>
+               <dijbekeroSzamlaszam>fee_request_identifier</dijbekeroSzamlaszam>
+               <elolegszamla>false</elolegszamla>
+               <vegszamla>true</vegszamla>
+               <elolegSzamlaszam>proforma_invoice_identifier</elolegSzamlaszam>
+               <helyesbitoszamla>false</helyesbitoszamla>
+               <helyesbitettSzamlaszam>corrected_invoice_identifier</helyesbitettSzamlaszam>
+               <dijbekero>false</dijbekero>
+               <szallitolevel>false</szallitolevel>
+               <logoExtra>logo_extra</logoExtra>
+               <szamlaszamElotag>PRFX</szamlaszamElotag>
+               <fizetendoKorrekcio>123.4</fizetendoKorrekcio>
+               <fizetve>true</fizetve>
+               <arresAfa>false</arresAfa>
+               <eusAfa>false</eusAfa>
+               <szamlaSablon>invoice_draft</szamlaSablon>
+               <elonezetpdf>false</elonezetpdf>
+               </fejlec>
+               """
+    end
+  end
+
+  def params(params \\ %{nope: "nope"}) do
+    HeaderFactory.get_params(params)
   end
 end

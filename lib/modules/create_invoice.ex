@@ -1,12 +1,11 @@
 defmodule ExSzamlazzHu.Modules.CreateInvoice do
   alias ExSzamlazzHu.Modules.CreateInvoice.InvoiceData
-  alias ExSzamlazzHu.Modules.CreateInvoice.XMLBuilder
 
   def run(params) do
     params
     |> InvoiceData.parse()
     |> IO.inspect()
-    |> XMLBuilder.build()
+    |> InvoiceData.to_xml()
     |> IO.inspect()
   end
 end

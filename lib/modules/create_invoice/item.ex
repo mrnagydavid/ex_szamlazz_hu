@@ -1,5 +1,6 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.Item do
-  alias ExSzamlazzHu.Modules.CreateInvoice.ItemLedger
+defmodule ExSzamlazzHu.Modules.CreateInvoice.Items.Item do
+  alias ExSzamlazzHu.Modules.CreateInvoice.Items.Item.ItemLedger
+  alias ExSzamlazzHu.Utils.StructToXML
 
   @type t() :: %__MODULE__{}
 
@@ -32,19 +33,32 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Item do
   def parse(nil), do: nil
 
   def parse(params) do
-    %__MODULE__{
-      megnevezes: params[:megnevezes],
-      azonosito: params[:azonosito],
-      mennyiseg: params[:mennyiseg],
-      mennyisegiEgyseg: params[:mennyisegiEgyseg],
-      nettoEgysegar: params[:nettoEgysegar],
-      afakulcs: params[:afakulcs],
-      arresAfaAlap: params[:arresAfaAlap],
-      nettoErtek: params[:nettoErtek],
-      afaErtek: params[:afaErtek],
-      bruttoErtek: params[:bruttoErtek],
-      megjegyzes: params[:megjegyzes],
-      tetelFokonyv: ItemLedger.parse(params[:tetelFokonyv])
-    }
+    __MODULE__
+    |> struct(Map.drop(params, [:tetelFokonyv]))
+    |> Map.put(:tetelFokonyv, ItemLedger.parse(params[:tetelFokonyv]))
+  end
+
+  @spec to_xml(t()) :: String.t()
+  def to_xml(%__MODULE__{} = module) do
+    tags = [
+      megnevezes: &"<megnevezes>#{&1}</megnevezes>",
+      azonosito: &"<azonosito>#{&1}</azonosito>",
+      mennyiseg: &"<mennyiseg>#{&1}</mennyiseg>",
+      mennyisegiEgyseg: &"<mennyisegiEgyseg>#{&1}</mennyisegiEgyseg>",
+      nettoEgysegar: &"<nettoEgysegar>#{&1}</nettoEgysegar>",
+      afakulcs: &"<afakulcs>#{&1}</afakulcs>",
+      arresAfaAlap: &"<arresAfaAlap>#{&1}</arresAfaAlap>",
+      nettoErtek: &"<nettoErtek>#{&1}</nettoErtek>",
+      afaErtek: &"<afaErtek>#{&1}</afaErtek>",
+      bruttoErtek: &"<bruttoErtek>#{&1}</bruttoErtek>",
+      megjegyzes: &"<megjegyzes>#{&1}</megjegyzes>",
+      tetelFokonyv: &ItemLedger.to_xml(&1)
+    ]
+
+    """
+    <tetel>
+    #{StructToXML.run(module, tags)}
+    </tetel>
+    """
   end
 end

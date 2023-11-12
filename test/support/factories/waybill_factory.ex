@@ -4,7 +4,7 @@ defmodule ExSzamlazzHu.Factories.WaybillFactory do
   alias ExSzamlazzHu.Factories.TransoflexFactory
   alias ExSzamlazzHu.Factories.SprinterFactory
 
-  @three_pls [:transoflex, :ppp, :sprinter, :mpl]
+  @three_pls [:tof, :ppp, :sprinter, :mpl]
 
   def get_params(params \\ %{}) do
     %{
@@ -22,14 +22,6 @@ defmodule ExSzamlazzHu.Factories.WaybillFactory do
   end
 
   defp maybe_add_3pl(params) do
-    if Enum.all?(@three_pls, &(params[&1] == nil)) do
-      params
-    else
-      add_specific_3pl(params)
-    end
-  end
-
-  defp add_specific_3pl(params) do
     @three_pls
     |> Enum.filter(&(params[&1] != nil))
     |> Enum.reduce(params, fn three_pl, params ->
@@ -37,7 +29,7 @@ defmodule ExSzamlazzHu.Factories.WaybillFactory do
         case three_pl do
           :mpl -> MPLFactory.get_params(params[:mpl])
           :ppp -> PPPFactory.get_params(params[:ppp])
-          :transoflex -> TransoflexFactory.get_params(params[:transoflex])
+          :tof -> TransoflexFactory.get_params(params[:tof])
           :sprinter -> SprinterFactory.get_params(params[:sprinter])
         end
 

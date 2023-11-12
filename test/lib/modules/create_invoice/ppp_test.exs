@@ -16,6 +16,20 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.PPPTest do
     end
   end
 
+  describe "to_xml/1" do
+    test "should return a valid XML" do
+      assert params()
+             |> PPP.parse()
+             |> PPP.to_xml() ==
+               """
+               <ppp>
+               <vonalkodPrefix>barcode_prefix</vonalkodPrefix>
+               <vonalkodPostfix>barcode_postfix</vonalkodPostfix>
+               </ppp>
+               """
+    end
+  end
+
   def params() do
     PPPFactory.get_params(%{nope: "nope"})
   end

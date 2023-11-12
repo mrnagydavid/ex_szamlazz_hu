@@ -20,6 +20,24 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.CustomerLedgerTest do
     end
   end
 
+  describe "to_xml/1" do
+    test "should return a valid XML" do
+      assert params()
+             |> CustomerLedger.parse()
+             |> CustomerLedger.to_xml() ==
+               """
+               <vevoFokonyv>
+               <konyvelesDatum>accounting_date</konyvelesDatum>
+               <vevoAzonosito>customer_identifier</vevoAzonosito>
+               <vevoFokonyviSzam>ledger_number</vevoFokonyviSzam>
+               <folyamatosTelj>continuous_delivery</folyamatosTelj>
+               <elszDatumTol>settlement_date_from</elszDatumTol>
+               <elszDatumIg>settlement_date_to</elszDatumIg>
+               </vevoFokonyv>
+               """
+    end
+  end
+
   def params() do
     CustomerLedgerFactory.get_params(%{nope: "nope"})
   end

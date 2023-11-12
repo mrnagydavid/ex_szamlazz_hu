@@ -19,6 +19,23 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.MPLTest do
     end
   end
 
+  describe "to_xml/1" do
+    test "should parse a valid waybill for MPL" do
+      assert params()
+             |> MPL.parse()
+             |> MPL.to_xml() ==
+               """
+               <mpl>
+               <vevokod>buyer_identifier</vevokod>
+               <vonalkod>barcode</vonalkod>
+               <tomeg>weight</tomeg>
+               <kulonszolgaltatasok>extra_services</kulonszolgaltatasok>
+               <erteknyilvanitas>value_statement</erteknyilvanitas>
+               </mpl>
+               """
+    end
+  end
+
   def params() do
     MPLFactory.get_params(%{nope: "nope"})
   end

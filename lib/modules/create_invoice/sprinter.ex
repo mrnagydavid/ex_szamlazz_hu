@@ -1,4 +1,6 @@
 defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.Sprinter do
+  alias ExSzamlazzHu.Utils.StructToXML
+
   @type t :: %__MODULE__{}
 
   defstruct [
@@ -14,13 +16,24 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.Sprinter do
   def parse(nil), do: nil
 
   def parse(params) do
-    %__MODULE__{
-      azonosito: params[:azonosito],
-      feladokod: params[:feladokod],
-      iranykod: params[:iranykod],
-      csomagszam: params[:csomagszam],
-      vonalkodPostfix: params[:vonalkodPostfix],
-      szallitasiIdo: params[:szallitasiIdo]
-    }
+    struct(__MODULE__, params)
+  end
+
+  @spec to_xml(t()) :: String.t()
+  def to_xml(%__MODULE__{} = module) do
+    tags = [
+      azonosito: &"<azonosito>#{&1}</azonosito>",
+      feladokod: &"<feladokod>#{&1}</feladokod>",
+      iranykod: &"<iranykod>#{&1}</iranykod>",
+      csomagszam: &"<csomagszam>#{&1}</csomagszam>",
+      vonalkodPostfix: &"<vonalkodPostfix>#{&1}</vonalkodPostfix>",
+      szallitasiIdo: &"<szallitasiIdo>#{&1}</szallitasiIdo>"
+    ]
+
+    """
+    <sprinter>
+    #{StructToXML.run(module, tags)}
+    </sprinter>
+    """
   end
 end
