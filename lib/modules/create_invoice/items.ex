@@ -12,8 +12,7 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.Items do
   def to_xml(items) do
     rendered_items =
       items
-      |> Enum.map(&Item.to_xml/1)
-      |> Enum.join("\n")
+      |> Enum.map_join("\n", &Item.to_xml/1)
       |> String.replace("\n\n", "\n")
       |> String.trim()
 
