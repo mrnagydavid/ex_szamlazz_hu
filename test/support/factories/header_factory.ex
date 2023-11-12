@@ -1,4 +1,6 @@
 defmodule ExSzamlazzHu.Factories.HeaderFactory do
+  @moduledoc false
+
   def get_params(params \\ %{}) do
     %{
       keltDatum: "1997-08-29",

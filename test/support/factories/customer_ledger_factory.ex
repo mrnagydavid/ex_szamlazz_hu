@@ -1,4 +1,6 @@
 defmodule ExSzamlazzHu.Factories.CustomerLedgerFactory do
+  @moduledoc false
+
   def get_params(params \\ %{}) do
     %{
       konyvelesDatum: "accounting_date",

@@ -1,4 +1,6 @@
 defmodule ExSzamlazzHu.Factories.CustomerFactory do
+  @moduledoc false
+
   alias ExSzamlazzHu.Factories.CustomerLedgerFactory
 
   def get_params(params \\ %{}) do

@@ -1,4 +1,6 @@
 defmodule ExSzamlazzHu.Factories.InvoiceDataFactory do
+  @moduledoc false
+
   alias ExSzamlazzHu.Factories.SettingsFactory
   alias ExSzamlazzHu.Factories.HeaderFactory
   alias ExSzamlazzHu.Factories.CustomerFactory

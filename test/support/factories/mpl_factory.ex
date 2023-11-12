@@ -1,4 +1,6 @@
 defmodule ExSzamlazzHu.Factories.MPLFactory do
+  @moduledoc false
+
   def get_params(params \\ %{}) do
     %{
       vevokod: "buyer_identifier",

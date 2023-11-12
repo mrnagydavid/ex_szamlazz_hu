@@ -1,4 +1,6 @@
 defmodule ExSzamlazzHu.Factories.WaybillFactory do
+  @moduledoc false
+
   alias ExSzamlazzHu.Factories.MPLFactory
   alias ExSzamlazzHu.Factories.PPPFactory
   alias ExSzamlazzHu.Factories.TransoflexFactory

@@ -1,4 +1,6 @@
 defmodule ExSzamlazzHu.Modules.CreateInvoice do
+  @moduledoc false
+
   alias Tesla.Multipart
   alias ExSzamlazzHu.Modules.CreateInvoice.InvoiceData
   alias ExSzamlazzHu.Utils.TemporaryFile

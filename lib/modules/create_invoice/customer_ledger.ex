@@ -1,4 +1,6 @@
 defmodule ExSzamlazzHu.Modules.CreateInvoice.CustomerLedger do
+  @moduledoc false
+
   alias ExSzamlazzHu.Utils.StructToXML
 
   @type t :: %__MODULE__{}

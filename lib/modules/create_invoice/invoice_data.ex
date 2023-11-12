@@ -1,4 +1,6 @@
 defmodule ExSzamlazzHu.Modules.CreateInvoice.InvoiceData do
+  @moduledoc false
+
   alias ExSzamlazzHu.Modules.CreateInvoice.Settings
   alias ExSzamlazzHu.Modules.CreateInvoice.Header
   alias ExSzamlazzHu.Modules.CreateInvoice.Seller

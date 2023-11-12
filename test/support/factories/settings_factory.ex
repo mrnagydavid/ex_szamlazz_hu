@@ -1,4 +1,6 @@
 defmodule ExSzamlazzHu.Factories.SettingsFactory do
+  @moduledoc false
+
   def get_params(params \\ %{}) do
     %{
       felhasznalo: "user",

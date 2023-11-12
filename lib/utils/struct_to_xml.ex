@@ -1,4 +1,6 @@
 defmodule ExSzamlazzHu.Utils.StructToXML do
+  @moduledoc false
+
   def run(struct, params) do
     params
     |> Enum.map(fn {tag, fun} ->

@@ -1,4 +1,6 @@
 defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill do
+  @moduledoc false
+
   alias ExSzamlazzHu.Modules.CreateInvoice.Waybill.Transoflex
   alias ExSzamlazzHu.Modules.CreateInvoice.Waybill.Sprinter
   alias ExSzamlazzHu.Modules.CreateInvoice.Waybill.PPP

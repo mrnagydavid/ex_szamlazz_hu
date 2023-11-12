@@ -1,4 +1,6 @@
 defmodule ExSzamlazzHu.Factories.SprinterFactory do
+  @moduledoc false
+
   def get_params(params \\ %{}) do
     %{
       azonosito: "identifier",
