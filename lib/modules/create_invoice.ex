@@ -3,6 +3,7 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice do
 
   alias Tesla.Multipart
   alias ExSzamlazzHu.Modules.CreateInvoice.InvoiceData
+  alias ExSzamlazzHu.Modules.CreateInvoice.Result
   alias ExSzamlazzHu.Utils.TemporaryFile
 
   def run(params) do
@@ -10,15 +11,12 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice do
          xml <- InvoiceData.to_xml(invoice_data),
          {:ok, file_path} <- save_temporary_file(xml),
          {:ok, response} <- send_request(file_path),
-         {:ok, success, data} <- handle_response(response, invoice_data) do
-      if success do
-        {:ok, %{response: response, info: data}}
-      else
-        {:error, %{response: response, info: data}}
-      end
+         {:ok, success, data} <- handle_response(response, invoice_data),
+         result <- compile_result(success, data, response) do
+      {:ok, result}
     else
       {:error, :cannot_save_temporary_file} -> {:error, :cannot_save_temporary_file}
-      {:error, :szamlazz_hu_is_down} -> {:error, :szamlazz_hu_is_down}
+      {:error, error} -> {:error, error}
     end
   end
 
@@ -45,7 +43,7 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice do
     header_map = Map.new(response.headers)
 
     cond do
-      header_map["szlahu_down"] == "true" -> {:error, :szamlazz_hu_is_down}
+      header_map["szlahu_down"] == "true" -> {:ok, false, %{szlahu_down: true}}
       header_map["szlahu_error_code"] == nil -> handle_success_response(response, invoice_data)
       true -> handle_error_response(response)
     end
@@ -95,15 +93,17 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice do
     end
   end
 
-  defp get_invoice_pdf_data(%Tesla.Env{} = response, %InvoiceData{
-         beallitasok: %{szamlaLetoltes: true, valaszVerzio: 1}
-       }) do
+  defp get_invoice_pdf_data(
+         %Tesla.Env{} = response,
+         %InvoiceData{beallitasok: %{szamlaLetoltes: true, valaszVerzio: 1}}
+       ) do
     response.body
   end
 
-  defp get_invoice_pdf_data(%Tesla.Env{} = response, %InvoiceData{
-         beallitasok: %{szamlaLetoltes: true, valaszVerzio: 2}
-       }) do
+  defp get_invoice_pdf_data(
+         %Tesla.Env{} = response,
+         %InvoiceData{beallitasok: %{szamlaLetoltes: true, valaszVerzio: 2}}
+       ) do
     [pdf_tag] = Regex.run(~r/<pdf>(.*)<\/pdf>/ims, response.body, capture: :first)
     [_, base64_pdf] = String.split(pdf_tag, "<pdf>")
     [base64_pdf, _] = String.split(base64_pdf, "</pdf>")
@@ -114,5 +114,22 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice do
       |> String.replace("\n", "")
 
     Base.decode64!(base64_pdf)
+  end
+
+  defp compile_result(success, data, response) do
+    %Result{
+      success: success,
+      raw_response: response,
+      szlahu_id: data[:szlahu_id],
+      szlahu_nettovegosszeg: data[:szlahu_nettovegosszeg],
+      szlahu_szamlaszam: data[:szlahu_szamlaszam],
+      szlahu_bruttovegosszeg: data[:szlahu_bruttovegosszeg],
+      szlahu_kintlevoseg: data[:szlahu_kintlevoseg],
+      szlahu_vevoifiokurl: data[:szlahu_vevoifiokurl],
+      path_to_pdf_invoice: data[:invoice_file_path],
+      szlahu_error: data[:szlahu_error],
+      szlahu_error_code: data[:szlahu_error_code],
+      szlahu_down: data[:szlahu_down] == true
+    }
   end
 end
