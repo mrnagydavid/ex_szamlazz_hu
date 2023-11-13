@@ -138,8 +138,7 @@ defmodule ExSzamlazzHu.Modules.CreateInvoice.InvoiceDataTest do
                    elolegSzamlaszam: "proforma_invoice_identifier",
                    helyesbitettSzamlaszam: "corrected_invoice_identifier"
                  }),
-               vevo:
-                 CustomerFactory.get_params(%{vevoFokonyv: CustomerLedgerFactory.get_params()}),
+               vevo: CustomerFactory.get_params(%{vevoFokonyv: CustomerLedgerFactory.get_params()}),
                fuvarlevel: WaybillFactory.get_params(%{mpl: %{}}),
                tetelek: [
                  ItemFactory.get_params(%{
