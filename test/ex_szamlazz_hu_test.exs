@@ -3,7 +3,6 @@ defmodule ExSzamlazzHuTest do
   doctest ExSzamlazzHu
 
   test "greets the world" do
-    assert ExSzamlazzHu.create_invoice(%{}) == {:error, :not_implemented}
     assert ExSzamlazzHu.reverse_invoice(%{}) == {:error, :not_implemented}
     assert ExSzamlazzHu.register_credit_entry(%{}) == {:error, :not_implemented}
     assert ExSzamlazzHu.query_invoice_pdf(%{}) == {:error, :not_implemented}
