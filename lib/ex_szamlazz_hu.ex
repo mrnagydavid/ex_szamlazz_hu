@@ -103,18 +103,18 @@ defmodule ExSzamlazzHu do
       {:ok, %ExSzamlazzHu.Modules.CreateInvoice.Result{success: true}} = ExSzamlazzHu.create_invoice(params)
 
       %ExSzamlazzHu.Modules.CreateInvoice.Result{
-        success: true,                // Indicates whether the request to the szamla.hu API was successful
-        raw_response: nil,            // The raw response from the szamla.hu API
-        szlahu_id: nil,               // The (internal) ID of the created invoice
-        szlahu_szamlaszam: nil,       // The invoice number
-        szlahu_nettovegosszeg: nil,   // The net amount of the created invoice
-        szlahu_bruttovegosszeg: nil,  // The gross amount of the created invoice
-        szlahu_kintlevoseg: nil,      // The amount not yet paid
-        szlahu_vevoifiokurl: nil,     // The URL of the invoice
-        path_to_pdf_invoice: nil,     // The path to the created invoice, if the PDF file was requested
-        szlahu_error: nil,            // The error message, if any (and in Hungarian)
-        szlahu_error_code: nil,       // The error code
-        szlahu_down: false            // Indicates whether the Szamlazz.hu API is not available
+        success: true,                # Indicates whether the request to the szamla.hu API was successful
+        raw_response: nil,            # The raw response from the szamla.hu API
+        szlahu_id: nil,               # The (internal) ID of the created invoice
+        szlahu_szamlaszam: nil,       # The invoice number
+        szlahu_nettovegosszeg: nil,   # The net amount of the created invoice
+        szlahu_bruttovegosszeg: nil,  # The gross amount of the created invoice
+        szlahu_kintlevoseg: nil,      # The amount not yet paid
+        szlahu_vevoifiokurl: nil,     # The URL of the invoice
+        path_to_pdf_invoice: nil,     # The path to the created invoice, if the PDF file was requested
+        szlahu_error: nil,            # The error message, if any (and in Hungarian)
+        szlahu_error_code: nil,       # The error code
+        szlahu_down: false            # Indicates whether the Szamlazz.hu API is not available
       }
   """
   @moduledoc since: "0.1.0"
