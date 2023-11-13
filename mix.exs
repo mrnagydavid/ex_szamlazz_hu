@@ -32,7 +32,8 @@ defmodule ExSzamlazzHu.MixProject do
 
   defp deps do
     [
-      {:tesla, "~> 1.7.0"},
+      {:tesla, "== 1.8.0"},
+      {:hackney, "== 1.20.1", only: [:dev, :test]},
       {:ex_doc, "~> 0.29.4", only: :dev},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.3", only: [:dev, :test], runtime: false},
