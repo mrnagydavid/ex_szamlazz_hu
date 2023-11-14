@@ -6,6 +6,7 @@ defmodule ExSzamlazzHu.CreateInvoice do
   alias ExSzamlazzHu.CreateInvoice.Result
   alias ExSzamlazzHu.Utils.TemporaryFile
 
+  @spec run(params :: map()) :: {:ok, Result.t()} | {:error, :cannot_save_temporary_file} | {:error, any()}
   def run(params) do
     with invoice_data <- InvoiceData.parse(params),
          xml <- InvoiceData.to_xml(invoice_data),
@@ -14,9 +15,6 @@ defmodule ExSzamlazzHu.CreateInvoice do
          {:ok, success, data} <- handle_response(response, invoice_data),
          result <- compile_result(success, data, response) do
       {:ok, result}
-    else
-      {:error, :cannot_save_temporary_file} -> {:error, :cannot_save_temporary_file}
-      {:error, error} -> {:error, error}
     end
   end
 
@@ -63,7 +61,7 @@ defmodule ExSzamlazzHu.CreateInvoice do
   defp handle_success_response(%Tesla.Env{} = response, invoice_data) do
     header_map = Map.new(response.headers)
 
-    result =
+    params =
       %{
         szlahu_id: header_map["szlahu_id"],
         szlahu_nettovegosszeg: header_map["szlahu_nettovegosszeg"],
@@ -72,7 +70,8 @@ defmodule ExSzamlazzHu.CreateInvoice do
         szlahu_kintlevoseg: header_map["szlahu_kintlevoseg"],
         szlahu_vevoifiokurl: header_map["szlahu_vevoifiokurl"]
       }
-      |> maybe_add_invoice_path_info(response, invoice_data)
+
+    result = maybe_add_invoice_path_info(params, response, invoice_data)
 
     {:ok, true, result}
   end

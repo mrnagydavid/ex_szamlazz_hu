@@ -20,7 +20,7 @@ defmodule ExSzamlazzHu.CreateInvoice.Waybill do
     :mpl
   ]
 
-  @spec parse(map()) :: t() | nil
+  @spec parse(map() | nil) :: t() | nil
   def parse(nil), do: nil
 
   def parse(params) do

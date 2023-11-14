@@ -36,7 +36,7 @@ defmodule ExSzamlazzHu.CreateInvoice.Customer do
     :megjegyzes
   ]
 
-  @spec parse(map()) :: t() | nil
+  @spec parse(map() | nil) :: t() | nil
   def parse(nil), do: nil
 
   def parse(params) do
