@@ -4,6 +4,11 @@ on:
   pull_request:
     branches: [develop]
 
+env:
+  MIX_ENV: test
+  LANG: C.UTF-8
+  SZAMLAZZ_AGENT_KEY: ${{ secrets.SZAMLAZZ_AGENT_KEY_TEST }}
+
 jobs:
   build:
     name: Build and test
@@ -77,8 +82,4 @@ jobs:
       - name: Compile code
         run: mix compile --warnings-as-errors
       - name: Run tests
-        run: mix test
-
-    env:
-      MIX_ENV: test
-      LANG: C.UTF-8
+        run: mix test --include external:true

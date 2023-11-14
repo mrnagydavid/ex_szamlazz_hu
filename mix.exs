@@ -12,6 +12,7 @@ defmodule ExSzamlazzHu.MixProject do
       name: "ExSzamlazzHu",
       source_url: @source_url,
       elixir: "~> 1.14",
+      elixirc_paths: elixirc_paths(Mix.env()),
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       package: package(),
@@ -31,10 +32,12 @@ defmodule ExSzamlazzHu.MixProject do
 
   defp deps do
     [
-      {:tesla, "~> 1.7.0"},
+      {:tesla, "== 1.8.0"},
+      {:hackney, "== 1.20.1", only: [:dev, :test]},
       {:ex_doc, "~> 0.29.4", only: :dev},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 1.3", only: [:dev, :test], runtime: false}
+      {:dialyxir, "~> 1.3", only: [:dev, :test], runtime: false},
+      {:faker, "~> 0.17", only: [:test]}
     ]
   end
 
@@ -43,6 +46,9 @@ defmodule ExSzamlazzHu.MixProject do
     Szamlazz.hu client for Elixir
     """
   end
+
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
 
   defp package do
     [
