@@ -6,6 +6,8 @@ defmodule ExSzamlazzHu.CreateInvoice do
   alias ExSzamlazzHu.CreateInvoice.Result
   alias ExSzamlazzHu.Utils.TemporaryFile
 
+  @url "https://www.szamlazz.hu/szamla/"
+
   @spec run(params :: map()) :: {:ok, Result.t()} | {:error, :cannot_save_temporary_file} | {:error, any()}
   def run(params) do
     with invoice_data <- InvoiceData.parse(params),
@@ -32,9 +34,7 @@ defmodule ExSzamlazzHu.CreateInvoice do
       |> Multipart.add_content_type_param("charset=utf-8")
       |> Multipart.add_file(file_path, name: "action-xmlagentxmlfile")
 
-    url = Application.get_env(:ex_szamlazz_hu, :szamlazz_hu_api_url)
-
-    Tesla.post(url, body)
+    Tesla.post(@url, body)
   end
 
   defp handle_response(%Tesla.Env{} = response, invoice_data) do

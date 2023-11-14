@@ -1,8 +1,8 @@
 defmodule ExSzamlazzHu.CreateInvoice.Result do
   @moduledoc """
-  Represents the result of the invoice creation process.
+  Represents the result of the invoice creation call.
 
-  See the [documentation](https://hexdocs.pm/ex_szamlazz_hu/ExSzamlazzHu.html)
+  See the [documentation](https://hexdocs.pm/ex_szamlazz_hu)
   """
   @moduledoc since: "0.1.0"
 
