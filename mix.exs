@@ -42,7 +42,7 @@ defmodule ExSzamlazzHu.MixProject do
 
   defp description do
     """
-    A very thing wrapper around Szamlazz.hu API.
+    A very thin wrapper for the Szamlazz.hu API.
     """
   end
 
