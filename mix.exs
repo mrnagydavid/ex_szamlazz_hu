@@ -51,7 +51,6 @@ defmodule ExSzamlazzHu.MixProject do
 
   defp package do
     [
-      files: ["lib", "mix.exs", "README*", "LICENSE*"],
       maintainers: ["David Nagy", "Mikhail Alekseev"],
       licenses: ["MIT"],
       links: %{GitHub: @source_url},
