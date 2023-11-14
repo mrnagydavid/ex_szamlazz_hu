@@ -91,6 +91,8 @@ defmodule ExSzamlazzHu.CreateInvoice do
     end
   end
 
+  defp maybe_add_invoice_path_info(info, _, _), do: info
+
   defp get_invoice_pdf_data(
          %Tesla.Env{} = response,
          %InvoiceData{beallitasok: %{szamlaLetoltes: true, valaszVerzio: 1}}
