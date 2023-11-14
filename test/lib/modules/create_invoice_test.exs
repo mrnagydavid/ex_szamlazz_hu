@@ -51,6 +51,29 @@ defmodule ExSzamlazzHu.CreateInvoiceTest do
       assert result.szlahu_down == false
     end
 
+    test "should successfully create an invoice when the response type is text" do
+      params =
+        params([
+          {[:beallitasok, :valaszVerzio], 1},
+          {[:beallitasok, :szamlaLetoltes], false}
+        ])
+
+      assert {:ok, %CreateInvoice.Result{success: true} = result} = attempt_with_retry(params)
+
+      assert result.path_to_pdf_invoice == nil
+      assert %Tesla.Env{} = result.raw_response
+      assert result.raw_response.body != nil
+      assert result.szlahu_id != nil
+      assert result.szlahu_kintlevoseg == "0"
+      assert result.szlahu_nettovegosszeg == "200"
+      assert result.szlahu_bruttovegosszeg == "254"
+      assert result.szlahu_szamlaszam != nil
+      assert result.szlahu_vevoifiokurl != nil
+      assert result.szlahu_error == nil
+      assert result.szlahu_error_code == nil
+      assert result.szlahu_down == false
+    end
+
     test "should return the error code and error message when the agent key is missing" do
       params =
         params([
