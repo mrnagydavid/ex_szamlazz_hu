@@ -6,6 +6,8 @@ defmodule ExSzamlazzHu.CreateInvoice.Result do
   """
   @moduledoc since: "0.1.0"
 
+  @type t() :: %__MODULE__{}
+
   defstruct success: nil,
             raw_response: nil,
             szlahu_id: nil,
