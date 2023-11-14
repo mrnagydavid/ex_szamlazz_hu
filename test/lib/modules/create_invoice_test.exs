@@ -12,7 +12,7 @@ defmodule ExSzamlazzHu.CreateInvoiceTest do
           {[:beallitasok, :szamlaLetoltes], true}
         ])
 
-      assert {:ok, %CreateInvoice.Result{success: true} = result} = CreateInvoice.run(params)
+      assert {:ok, %CreateInvoice.Result{success: true} = result} = attempt_with_retry(params)
 
       assert File.exists?(result.path_to_pdf_invoice)
       assert %Tesla.Env{} = result.raw_response
@@ -35,7 +35,7 @@ defmodule ExSzamlazzHu.CreateInvoiceTest do
           {[:beallitasok, :szamlaLetoltes], true}
         ])
 
-      assert {:ok, %CreateInvoice.Result{success: true} = result} = CreateInvoice.run(params)
+      assert {:ok, %CreateInvoice.Result{success: true} = result} = attempt_with_retry(params)
 
       assert File.exists?(result.path_to_pdf_invoice)
       assert %Tesla.Env{} = result.raw_response
@@ -58,7 +58,7 @@ defmodule ExSzamlazzHu.CreateInvoiceTest do
           {[:beallitasok, :szamlaagentkulcs], ""}
         ])
 
-      assert {:ok, %CreateInvoice.Result{success: false} = result} = CreateInvoice.run(params)
+      assert {:ok, %CreateInvoice.Result{success: false} = result} = attempt_with_retry(params)
 
       assert result.path_to_pdf_invoice == nil
       assert %Tesla.Env{} = result.raw_response
@@ -125,5 +125,12 @@ defmodule ExSzamlazzHu.CreateInvoiceTest do
     |> Enum.reduce(params, fn {key, value}, acc ->
       put_in(acc, key, value)
     end)
+  end
+
+  defp attempt_with_retry(params) do
+    case CreateInvoice.run(params) do
+      {:error, :closed} -> CreateInvoice.run(params)
+      result -> result
+    end
   end
 end
