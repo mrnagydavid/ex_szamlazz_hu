@@ -8,8 +8,7 @@ defmodule ExSzamlazzHu.MixProject do
     [
       app: :ex_szamlazz_hu,
       version: @version,
-      description: "Szamlazz.hu client",
-      name: "ExSzamlazzHu",
+      description: description(),
       source_url: @source_url,
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -43,7 +42,7 @@ defmodule ExSzamlazzHu.MixProject do
 
   defp description do
     """
-    Szamlazz.hu client for Elixir
+    A very thing wrapper around Szamlazz.hu API.
     """
   end
 
