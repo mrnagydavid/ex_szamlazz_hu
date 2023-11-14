@@ -1,4 +1,4 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.Transoflex do
+defmodule ExSzamlazzHu.CreateInvoice.Waybill.Transoflex do
   @moduledoc false
 
   alias ExSzamlazzHu.Utils.StructToXML

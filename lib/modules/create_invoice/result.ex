@@ -1,4 +1,4 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.Result do
+defmodule ExSzamlazzHu.CreateInvoice.Result do
   @moduledoc """
   Represents the result of the invoice creation process.
 

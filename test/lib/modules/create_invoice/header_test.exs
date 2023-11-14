@@ -1,6 +1,6 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.HeaderTest do
+defmodule ExSzamlazzHu.CreateInvoice.HeaderTest do
   use ExUnit.Case, async: true
-  alias ExSzamlazzHu.Modules.CreateInvoice.Header
+  alias ExSzamlazzHu.CreateInvoice.Header
   alias ExSzamlazzHu.Factories.HeaderFactory
 
   describe "parse/1" do

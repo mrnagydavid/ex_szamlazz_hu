@@ -1,13 +1,13 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.InvoiceDataTest do
+defmodule ExSzamlazzHu.CreateInvoice.InvoiceDataTest do
   use ExUnit.Case, async: true
-  alias ExSzamlazzHu.Modules.CreateInvoice.InvoiceData
-  alias ExSzamlazzHu.Modules.CreateInvoice.Settings
-  alias ExSzamlazzHu.Modules.CreateInvoice.Header
-  alias ExSzamlazzHu.Modules.CreateInvoice.Customer
-  alias ExSzamlazzHu.Modules.CreateInvoice.Seller
-  alias ExSzamlazzHu.Modules.CreateInvoice.Waybill
-  alias ExSzamlazzHu.Modules.CreateInvoice.Waybill.MPL
-  alias ExSzamlazzHu.Modules.CreateInvoice.Items.Item
+  alias ExSzamlazzHu.CreateInvoice.InvoiceData
+  alias ExSzamlazzHu.CreateInvoice.Settings
+  alias ExSzamlazzHu.CreateInvoice.Header
+  alias ExSzamlazzHu.CreateInvoice.Customer
+  alias ExSzamlazzHu.CreateInvoice.Seller
+  alias ExSzamlazzHu.CreateInvoice.Waybill
+  alias ExSzamlazzHu.CreateInvoice.Waybill.MPL
+  alias ExSzamlazzHu.CreateInvoice.Items.Item
   alias ExSzamlazzHu.Factories.InvoiceDataFactory
   alias ExSzamlazzHu.Factories.HeaderFactory
   alias ExSzamlazzHu.Factories.WaybillFactory

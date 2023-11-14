@@ -1,6 +1,6 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.ItemTest do
+defmodule ExSzamlazzHu.CreateInvoice.ItemTest do
   use ExUnit.Case, async: true
-  alias ExSzamlazzHu.Modules.CreateInvoice.Items.Item
+  alias ExSzamlazzHu.CreateInvoice.Items.Item
   alias ExSzamlazzHu.Factories.ItemFactory
   alias ExSzamlazzHu.Factories.ItemLedgerFactory
 

@@ -1,4 +1,4 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.PPP do
+defmodule ExSzamlazzHu.CreateInvoice.Waybill.PPP do
   @moduledoc false
 
   alias ExSzamlazzHu.Utils.StructToXML

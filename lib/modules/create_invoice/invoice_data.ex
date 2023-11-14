@@ -1,12 +1,12 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.InvoiceData do
+defmodule ExSzamlazzHu.CreateInvoice.InvoiceData do
   @moduledoc false
 
-  alias ExSzamlazzHu.Modules.CreateInvoice.Settings
-  alias ExSzamlazzHu.Modules.CreateInvoice.Header
-  alias ExSzamlazzHu.Modules.CreateInvoice.Seller
-  alias ExSzamlazzHu.Modules.CreateInvoice.Customer
-  alias ExSzamlazzHu.Modules.CreateInvoice.Waybill
-  alias ExSzamlazzHu.Modules.CreateInvoice.Items
+  alias ExSzamlazzHu.CreateInvoice.Settings
+  alias ExSzamlazzHu.CreateInvoice.Header
+  alias ExSzamlazzHu.CreateInvoice.Seller
+  alias ExSzamlazzHu.CreateInvoice.Customer
+  alias ExSzamlazzHu.CreateInvoice.Waybill
+  alias ExSzamlazzHu.CreateInvoice.Items
   alias ExSzamlazzHu.Utils.StructToXML
 
   @type t :: %__MODULE__{}

@@ -1,7 +1,7 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.Customer do
+defmodule ExSzamlazzHu.CreateInvoice.Customer do
   @moduledoc false
 
-  alias ExSzamlazzHu.Modules.CreateInvoice.CustomerLedger
+  alias ExSzamlazzHu.CreateInvoice.CustomerLedger
   alias ExSzamlazzHu.Utils.StructToXML
 
   @type t :: %__MODULE__{}

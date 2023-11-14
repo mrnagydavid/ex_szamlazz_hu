@@ -1,6 +1,6 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.CustomerLedgerTest do
+defmodule ExSzamlazzHu.CreateInvoice.CustomerLedgerTest do
   use ExUnit.Case, async: true
-  alias ExSzamlazzHu.Modules.CreateInvoice.CustomerLedger
+  alias ExSzamlazzHu.CreateInvoice.CustomerLedger
   alias ExSzamlazzHu.Factories.CustomerLedgerFactory
 
   describe "parse/1" do

@@ -1,4 +1,4 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.Sprinter do
+defmodule ExSzamlazzHu.CreateInvoice.Waybill.Sprinter do
   @moduledoc false
 
   alias ExSzamlazzHu.Utils.StructToXML

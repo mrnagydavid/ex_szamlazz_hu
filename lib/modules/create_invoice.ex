@@ -1,9 +1,9 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice do
+defmodule ExSzamlazzHu.CreateInvoice do
   @moduledoc false
 
   alias Tesla.Multipart
-  alias ExSzamlazzHu.Modules.CreateInvoice.InvoiceData
-  alias ExSzamlazzHu.Modules.CreateInvoice.Result
+  alias ExSzamlazzHu.CreateInvoice.InvoiceData
+  alias ExSzamlazzHu.CreateInvoice.Result
   alias ExSzamlazzHu.Utils.TemporaryFile
 
   def run(params) do

@@ -1,7 +1,7 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.WaybillTest do
+defmodule ExSzamlazzHu.CreateInvoice.WaybillTest do
   use ExUnit.Case, async: true
-  alias ExSzamlazzHu.Modules.CreateInvoice.Waybill
-  alias ExSzamlazzHu.Modules.CreateInvoice.Waybill.MPL
+  alias ExSzamlazzHu.CreateInvoice.Waybill
+  alias ExSzamlazzHu.CreateInvoice.Waybill.MPL
   alias ExSzamlazzHu.Factories.WaybillFactory
 
   describe "parse/1" do

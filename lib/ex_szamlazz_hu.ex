@@ -1,5 +1,5 @@
 defmodule ExSzamlazzHu do
-  alias ExSzamlazzHu.Modules.CreateInvoice
+  alias ExSzamlazzHu.CreateInvoice
 
   @moduledoc """
   A very thin wrapper for the Szamlazz.hu API.
@@ -100,9 +100,9 @@ defmodule ExSzamlazzHu do
 
   The result of the call is a struct, which - among other things - contains the original response from the Szamlazz.hu API.
 
-      {:ok, %ExSzamlazzHu.Modules.CreateInvoice.Result{success: true}} = ExSzamlazzHu.create_invoice(params)
+      {:ok, %ExSzamlazzHu.CreateInvoice.Result{success: true}} = ExSzamlazzHu.create_invoice(params)
 
-      %ExSzamlazzHu.Modules.CreateInvoice.Result{
+      %ExSzamlazzHu.CreateInvoice.Result{
         success: true,                # Indicates whether the request to the szamla.hu API was successful
         raw_response: nil,            # The raw response from the szamla.hu API
         szlahu_id: nil,               # The (internal) ID of the created invoice

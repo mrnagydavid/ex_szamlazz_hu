@@ -1,6 +1,6 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoiceTest do
+defmodule ExSzamlazzHu.CreateInvoiceTest do
   use ExUnit.Case, async: false
-  alias ExSzamlazzHu.Modules.CreateInvoice
+  alias ExSzamlazzHu.CreateInvoice
 
   @moduletag :external
 

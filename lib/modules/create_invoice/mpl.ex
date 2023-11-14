@@ -1,4 +1,4 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.MPL do
+defmodule ExSzamlazzHu.CreateInvoice.Waybill.MPL do
   @moduledoc false
 
   alias ExSzamlazzHu.Utils.StructToXML

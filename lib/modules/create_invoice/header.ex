@@ -1,4 +1,4 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.Header do
+defmodule ExSzamlazzHu.CreateInvoice.Header do
   @moduledoc false
 
   alias ExSzamlazzHu.Utils.StructToXML

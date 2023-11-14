@@ -1,6 +1,6 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.SprinterTest do
+defmodule ExSzamlazzHu.CreateInvoice.Waybill.SprinterTest do
   use ExUnit.Case, async: true
-  alias ExSzamlazzHu.Modules.CreateInvoice.Waybill.Sprinter
+  alias ExSzamlazzHu.CreateInvoice.Waybill.Sprinter
   alias ExSzamlazzHu.Factories.SprinterFactory
 
   describe "parse/1" do

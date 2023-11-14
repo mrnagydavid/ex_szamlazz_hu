@@ -1,6 +1,6 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.PPPTest do
+defmodule ExSzamlazzHu.CreateInvoice.Waybill.PPPTest do
   use ExUnit.Case, async: true
-  alias ExSzamlazzHu.Modules.CreateInvoice.Waybill.PPP
+  alias ExSzamlazzHu.CreateInvoice.Waybill.PPP
   alias ExSzamlazzHu.Factories.PPPFactory
 
   describe "parse/1" do

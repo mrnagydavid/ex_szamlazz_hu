@@ -1,6 +1,6 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.SettingsTest do
+defmodule ExSzamlazzHu.CreateInvoice.SettingsTest do
   use ExUnit.Case, async: true
-  alias ExSzamlazzHu.Modules.CreateInvoice.Settings
+  alias ExSzamlazzHu.CreateInvoice.Settings
   alias ExSzamlazzHu.Factories.SettingsFactory
 
   describe "parse/1" do

@@ -1,7 +1,7 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.Items do
+defmodule ExSzamlazzHu.CreateInvoice.Items do
   @moduledoc false
 
-  alias ExSzamlazzHu.Modules.CreateInvoice.Items.Item
+  alias ExSzamlazzHu.CreateInvoice.Items.Item
 
   def parse(nil), do: []
 

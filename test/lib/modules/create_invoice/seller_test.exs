@@ -1,6 +1,6 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.SellerTest do
+defmodule ExSzamlazzHu.CreateInvoice.SellerTest do
   use ExUnit.Case, async: true
-  alias ExSzamlazzHu.Modules.CreateInvoice.Seller
+  alias ExSzamlazzHu.CreateInvoice.Seller
   alias ExSzamlazzHu.Factories.SellerFactory
 
   describe "parse/1" do

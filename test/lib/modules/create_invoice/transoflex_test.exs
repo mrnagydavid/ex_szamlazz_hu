@@ -1,6 +1,6 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill.TransoflexTest do
+defmodule ExSzamlazzHu.CreateInvoice.Waybill.TransoflexTest do
   use ExUnit.Case, async: true
-  alias ExSzamlazzHu.Modules.CreateInvoice.Waybill.Transoflex
+  alias ExSzamlazzHu.CreateInvoice.Waybill.Transoflex
   alias ExSzamlazzHu.Factories.TransoflexFactory
 
   describe "parse/1" do

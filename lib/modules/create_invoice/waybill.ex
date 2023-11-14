@@ -1,10 +1,10 @@
-defmodule ExSzamlazzHu.Modules.CreateInvoice.Waybill do
+defmodule ExSzamlazzHu.CreateInvoice.Waybill do
   @moduledoc false
 
-  alias ExSzamlazzHu.Modules.CreateInvoice.Waybill.Transoflex
-  alias ExSzamlazzHu.Modules.CreateInvoice.Waybill.Sprinter
-  alias ExSzamlazzHu.Modules.CreateInvoice.Waybill.PPP
-  alias ExSzamlazzHu.Modules.CreateInvoice.Waybill.MPL
+  alias ExSzamlazzHu.CreateInvoice.Waybill.Transoflex
+  alias ExSzamlazzHu.CreateInvoice.Waybill.Sprinter
+  alias ExSzamlazzHu.CreateInvoice.Waybill.PPP
+  alias ExSzamlazzHu.CreateInvoice.Waybill.MPL
   alias ExSzamlazzHu.Utils.StructToXML
 
   @type t :: %__MODULE__{}
