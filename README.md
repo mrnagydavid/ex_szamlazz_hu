@@ -64,6 +64,12 @@ config :tesla, :adapter, Tesla.Adapter.Hackney
 
 See more in [the Tesla documentation](https://hexdocs.pm/tesla/readme.html#adapters).
 
+## Usage notes
+
+The wrapper does no validation of the input parameters. The validation of the input parameters is done by Szamlazz.hu API.
+
+The XML for the request is built using the [`xml_builder` package](https://hexdocs.pm/xml_builder) and thus the provided values are escaped when the XML is built.
+
 ## Usage example
 
 To create an invoice via Szamlazz.hu, the parameters follow the same shape as described in the [Szamlazz.hu API documentation](https://docs.szamlazz.hu/#xsd-scheme-compliance).

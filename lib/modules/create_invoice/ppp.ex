@@ -17,17 +17,19 @@ defmodule ExSzamlazzHu.CreateInvoice.Waybill.PPP do
     struct(__MODULE__, params)
   end
 
+  def tag(), do: :ppp
+
+  def attrs(), do: nil
+
+  def content() do
+    [
+      :vonalkodPrefix,
+      :vonalkodPostfix
+    ]
+  end
+
   @spec to_xml(t()) :: String.t()
   def to_xml(%__MODULE__{} = module) do
-    tags = [
-      vonalkodPrefix: &"<vonalkodPrefix>#{&1}</vonalkodPrefix>",
-      vonalkodPostfix: &"<vonalkodPostfix>#{&1}</vonalkodPostfix>"
-    ]
-
-    """
-    <ppp>
-    #{StructToXML.run(module, tags)}
-    </ppp>
-    """
+    StructToXML.convert(module)
   end
 end

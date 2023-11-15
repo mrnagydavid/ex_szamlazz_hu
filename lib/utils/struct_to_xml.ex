@@ -1,22 +1,44 @@
 defmodule ExSzamlazzHu.Utils.StructToXML do
   @moduledoc false
 
-  @type tag_converter_param :: {atom(), (any() -> String.t())}
-
-  @spec run(struct(), params :: [tag_converter_param]) :: String.t()
-  def run(struct, params) do
-    params
-    |> Enum.map(&apply_xml_producing_funs(&1, struct))
-    |> Enum.reject(&is_nil/1)
-    |> Enum.join("\n")
-    |> String.replace("\n\n", "\n")
-    |> String.trim()
+  def convert(module, top_level \\ true) do
+    tag = module.__struct__.tag()
+    attributes = module.__struct__.attrs()
+    content = module.__struct__.content()
+    convert(module, tag, attributes, content, top_level)
   end
 
-  defp apply_xml_producing_funs({tag, fun}, struct) do
-    case Map.get(struct, tag) do
-      nil -> nil
-      value -> fun.(value)
+  def convert(module, tag, attributes, content, top_level \\ true) do
+    content =
+      content
+      |> Enum.map(fn
+        tag when is_atom(tag) -> {tag, nil, Map.get(module, tag)}
+        other -> other
+      end)
+      |> Enum.reject(fn
+        {_, _, value} -> is_nil(value)
+        _ -> false
+      end)
+      |> Enum.map(fn
+        struct when is_struct(struct) ->
+          convert(struct, false)
+
+        {_, _, struct} when is_struct(struct) ->
+          convert(struct, false)
+
+        {tag, attrs, list} when is_list(list) ->
+          value = Enum.map(list, fn struct -> convert(struct, false) end)
+          {tag, attrs, value}
+
+        {tag, attrs, value} ->
+          XmlBuilder.element(tag, attrs, value)
+      end)
+
+    if top_level do
+      doc = XmlBuilder.document(tag, attributes, content)
+      XmlBuilder.generate(doc) <> "\n"
+    else
+      XmlBuilder.element(tag, attributes, content)
     end
   end
 end

@@ -21,21 +21,23 @@ defmodule ExSzamlazzHu.CreateInvoice.Items.Item.ItemLedger do
     struct(__MODULE__, params)
   end
 
+  def tag(), do: :tetelFokonyv
+
+  def attrs(), do: nil
+
+  def content() do
+    [
+      :gazdasagiEsem,
+      :gazdasagiEsemAfa,
+      :arbevetelFokonyviSzam,
+      :afaFokonyviSzam,
+      :elszDatumTol,
+      :elszDatumIg
+    ]
+  end
+
   @spec to_xml(t()) :: String.t()
   def to_xml(%__MODULE__{} = module) do
-    tags = [
-      gazdasagiEsem: &"<gazdasagiEsem>#{&1}</gazdasagiEsem>",
-      gazdasagiEsemAfa: &"<gazdasagiEsemAfa>#{&1}</gazdasagiEsemAfa>",
-      arbevetelFokonyviSzam: &"<arbevetelFokonyviSzam>#{&1}</arbevetelFokonyviSzam>",
-      afaFokonyviSzam: &"<afaFokonyviSzam>#{&1}</afaFokonyviSzam>",
-      elszDatumTol: &"<elszDatumTol>#{&1}</elszDatumTol>",
-      elszDatumIg: &"<elszDatumIg>#{&1}</elszDatumIg>"
-    ]
-
-    """
-    <tetelFokonyv>
-    #{StructToXML.run(module, tags)}
-    </tetelFokonyv>
-    """
+    StructToXML.convert(module)
   end
 end

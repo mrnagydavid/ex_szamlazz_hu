@@ -25,12 +25,13 @@ defmodule ExSzamlazzHu.CreateInvoice.Waybill.MPLTest do
              |> MPL.parse()
              |> MPL.to_xml() ==
                """
+               <?xml version="1.0" encoding="UTF-8"?>
                <mpl>
-               <vevokod>buyer_identifier</vevokod>
-               <vonalkod>barcode</vonalkod>
-               <tomeg>weight</tomeg>
-               <kulonszolgaltatasok>extra_services</kulonszolgaltatasok>
-               <erteknyilvanitas>value_statement</erteknyilvanitas>
+                 <vevokod>buyer_identifier</vevokod>
+                 <vonalkod>barcode</vonalkod>
+                 <tomeg>weight</tomeg>
+                 <kulonszolgaltatasok>extra_services</kulonszolgaltatasok>
+                 <erteknyilvanitas>value_statement</erteknyilvanitas>
                </mpl>
                """
     end

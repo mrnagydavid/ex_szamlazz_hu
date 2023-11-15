@@ -26,13 +26,14 @@ defmodule ExSzamlazzHu.CreateInvoice.Waybill.TransoflexTest do
              |> Transoflex.parse()
              |> Transoflex.to_xml() ==
                """
+               <?xml version="1.0" encoding="UTF-8"?>
                <tof>
-               <azonosito>identifier</azonosito>
-               <shipmentID>shipment_id</shipmentID>
-               <csomagszam>package_identifier</csomagszam>
-               <countryCode>country_code</countryCode>
-               <zip>zip</zip>
-               <service>service</service>
+                 <azonosito>identifier</azonosito>
+                 <shipmentID>shipment_id</shipmentID>
+                 <csomagszam>package_identifier</csomagszam>
+                 <countryCode>country_code</countryCode>
+                 <zip>zip</zip>
+                 <service>service</service>
                </tof>
                """
     end

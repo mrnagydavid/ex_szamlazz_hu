@@ -32,23 +32,25 @@ defmodule ExSzamlazzHu.CreateInvoice.Waybill do
     |> Map.put(:mpl, MPL.parse(params[:mpl]))
   end
 
+  def tag(), do: :fuvarlevel
+
+  def attrs(), do: nil
+
+  def content() do
+    [
+      :uticel,
+      :futarSzolgalat,
+      :vonalkod,
+      :megjegyzes,
+      :tof,
+      :ppp,
+      :sprinter,
+      :mpl
+    ]
+  end
+
   @spec to_xml(t()) :: String.t()
   def to_xml(%__MODULE__{} = module) do
-    tags = [
-      uticel: &"<uticel>#{&1}</uticel>",
-      futarSzolgalat: &"<futarSzolgalat>#{&1}</futarSzolgalat>",
-      vonalkod: &"<vonalkod>#{&1}</vonalkod>",
-      megjegyzes: &"<megjegyzes>#{&1}</megjegyzes>",
-      tof: &Transoflex.to_xml(&1),
-      ppp: &PPP.to_xml(&1),
-      sprinter: &Sprinter.to_xml(&1),
-      mpl: &MPL.to_xml(&1)
-    ]
-
-    """
-    <fuvarlevel>
-    #{StructToXML.run(module, tags)}
-    </fuvarlevel>
-    """
+    StructToXML.convert(module)
   end
 end

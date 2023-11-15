@@ -2,6 +2,9 @@ defmodule ExSzamlazzHu.CreateInvoice.Items do
   @moduledoc false
 
   alias ExSzamlazzHu.CreateInvoice.Items.Item
+  alias ExSzamlazzHu.Utils.StructToXML
+
+  defstruct []
 
   def parse(nil), do: []
 
@@ -9,17 +12,15 @@ defmodule ExSzamlazzHu.CreateInvoice.Items do
     Enum.map(params, &Item.parse/1)
   end
 
-  def to_xml(items) do
-    rendered_items =
-      items
-      |> Enum.map_join("\n", &Item.to_xml/1)
-      |> String.replace("\n\n", "\n")
-      |> String.trim()
+  def tag(), do: :tetelek
 
-    """
-    <tetelek>
-    #{rendered_items}
-    </tetelek>
-    """
+  def attrs(), do: nil
+
+  def content(items) do
+    items
+  end
+
+  def to_xml(items) do
+    StructToXML.convert(%__MODULE__{}, tag(), attrs(), items)
   end
 end

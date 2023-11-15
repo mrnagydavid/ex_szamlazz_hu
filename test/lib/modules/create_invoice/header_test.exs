@@ -50,33 +50,34 @@ defmodule ExSzamlazzHu.CreateInvoice.HeaderTest do
              |> Header.parse()
              |> Header.to_xml() ==
                """
+               <?xml version="1.0" encoding="UTF-8"?>
                <fejlec>
-               <keltDatum>1997-08-29</keltDatum>
-               <teljesitesDatum>1997-08-29</teljesitesDatum>
-               <fizetesiHataridoDatum>1997-08-29</fizetesiHataridoDatum>
-               <fizmod>payment_method</fizmod>
-               <penznem>HUF</penznem>
-               <szamlaNyelve>en</szamlaNyelve>
-               <megjegyzes>comment</megjegyzes>
-               <arfolyamBank>exchange_rate_bank</arfolyamBank>
-               <arfolyam>123.4</arfolyam>
-               <rendelesSzam>order_identifier</rendelesSzam>
-               <dijbekeroSzamlaszam>fee_request_identifier</dijbekeroSzamlaszam>
-               <elolegszamla>false</elolegszamla>
-               <vegszamla>true</vegszamla>
-               <elolegSzamlaszam>proforma_invoice_identifier</elolegSzamlaszam>
-               <helyesbitoszamla>false</helyesbitoszamla>
-               <helyesbitettSzamlaszam>corrected_invoice_identifier</helyesbitettSzamlaszam>
-               <dijbekero>false</dijbekero>
-               <szallitolevel>false</szallitolevel>
-               <logoExtra>logo_extra</logoExtra>
-               <szamlaszamElotag>PRFX</szamlaszamElotag>
-               <fizetendoKorrekcio>123.4</fizetendoKorrekcio>
-               <fizetve>true</fizetve>
-               <arresAfa>false</arresAfa>
-               <eusAfa>false</eusAfa>
-               <szamlaSablon>invoice_draft</szamlaSablon>
-               <elonezetpdf>false</elonezetpdf>
+                 <keltDatum>1997-08-29</keltDatum>
+                 <teljesitesDatum>1997-08-29</teljesitesDatum>
+                 <fizetesiHataridoDatum>1997-08-29</fizetesiHataridoDatum>
+                 <fizmod>payment_method</fizmod>
+                 <penznem>HUF</penznem>
+                 <szamlaNyelve>en</szamlaNyelve>
+                 <megjegyzes>comment</megjegyzes>
+                 <arfolyamBank>exchange_rate_bank</arfolyamBank>
+                 <arfolyam>123.4</arfolyam>
+                 <rendelesSzam>order_identifier</rendelesSzam>
+                 <dijbekeroSzamlaszam>fee_request_identifier</dijbekeroSzamlaszam>
+                 <elolegszamla>false</elolegszamla>
+                 <vegszamla>true</vegszamla>
+                 <elolegSzamlaszam>proforma_invoice_identifier</elolegSzamlaszam>
+                 <helyesbitoszamla>false</helyesbitoszamla>
+                 <helyesbitettSzamlaszam>corrected_invoice_identifier</helyesbitettSzamlaszam>
+                 <dijbekero>false</dijbekero>
+                 <szallitolevel>false</szallitolevel>
+                 <logoExtra>logo_extra</logoExtra>
+                 <szamlaszamElotag>PRFX</szamlaszamElotag>
+                 <fizetendoKorrekcio>123.4</fizetendoKorrekcio>
+                 <fizetve>true</fizetve>
+                 <arresAfa>false</arresAfa>
+                 <eusAfa>false</eusAfa>
+                 <szamlaSablon>invoice_draft</szamlaSablon>
+                 <elonezetpdf>false</elonezetpdf>
                </fejlec>
                """
     end

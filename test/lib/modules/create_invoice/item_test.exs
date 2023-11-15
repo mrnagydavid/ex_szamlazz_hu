@@ -34,26 +34,27 @@ defmodule ExSzamlazzHu.CreateInvoice.ItemTest do
              |> Item.parse()
              |> Item.to_xml() ==
                """
+               <?xml version="1.0" encoding="UTF-8"?>
                <tetel>
-               <megnevezes>name</megnevezes>
-               <azonosito>identifier</azonosito>
-               <mennyiseg>1.5</mennyiseg>
-               <mennyisegiEgyseg>unit</mennyisegiEgyseg>
-               <nettoEgysegar>net_unit_price</nettoEgysegar>
-               <afakulcs>27</afakulcs>
-               <arresAfaAlap>margin_vat_base</arresAfaAlap>
-               <nettoErtek>100</nettoErtek>
-               <afaErtek>27</afaErtek>
-               <bruttoErtek>127</bruttoErtek>
-               <megjegyzes>comment</megjegyzes>
-               <tetelFokonyv>
-               <gazdasagiEsem>economic_event</gazdasagiEsem>
-               <gazdasagiEsemAfa>economic_event_vat</gazdasagiEsemAfa>
-               <arbevetelFokonyviSzam>income_ledger_number</arbevetelFokonyviSzam>
-               <afaFokonyviSzam>vat_ledger_number</afaFokonyviSzam>
-               <elszDatumTol>settlement_date_from</elszDatumTol>
-               <elszDatumIg>settlement_date_to</elszDatumIg>
-               </tetelFokonyv>
+                 <megnevezes>name</megnevezes>
+                 <azonosito>identifier</azonosito>
+                 <mennyiseg>1.5</mennyiseg>
+                 <mennyisegiEgyseg>unit</mennyisegiEgyseg>
+                 <nettoEgysegar>net_unit_price</nettoEgysegar>
+                 <afakulcs>27</afakulcs>
+                 <arresAfaAlap>margin_vat_base</arresAfaAlap>
+                 <nettoErtek>100</nettoErtek>
+                 <afaErtek>27</afaErtek>
+                 <bruttoErtek>127</bruttoErtek>
+                 <megjegyzes>comment</megjegyzes>
+                 <tetelFokonyv>
+                   <gazdasagiEsem>economic_event</gazdasagiEsem>
+                   <gazdasagiEsemAfa>economic_event_vat</gazdasagiEsemAfa>
+                   <arbevetelFokonyviSzam>income_ledger_number</arbevetelFokonyviSzam>
+                   <afaFokonyviSzam>vat_ledger_number</afaFokonyviSzam>
+                   <elszDatumTol>settlement_date_from</elszDatumTol>
+                   <elszDatumIg>settlement_date_to</elszDatumIg>
+                 </tetelFokonyv>
                </tetel>
                """
     end

@@ -36,38 +36,39 @@ defmodule ExSzamlazzHu.CreateInvoice.WaybillTest do
              |> Waybill.parse()
              |> Waybill.to_xml() ==
                """
+               <?xml version="1.0" encoding="UTF-8"?>
                <fuvarlevel>
-               <uticel>destination</uticel>
-               <futarSzolgalat>three_pl_provider</futarSzolgalat>
-               <vonalkod>barcode</vonalkod>
-               <megjegyzes>comment</megjegyzes>
-               <tof>
-               <azonosito>identifier</azonosito>
-               <shipmentID>shipment_id</shipmentID>
-               <csomagszam>package_identifier</csomagszam>
-               <countryCode>country_code</countryCode>
-               <zip>zip</zip>
-               <service>service</service>
-               </tof>
-               <ppp>
-               <vonalkodPrefix>barcode_prefix</vonalkodPrefix>
-               <vonalkodPostfix>barcode_postfix</vonalkodPostfix>
-               </ppp>
-               <sprinter>
-               <azonosito>identifier</azonosito>
-               <feladokod>sender_identifier</feladokod>
-               <iranykod>code_of_direction</iranykod>
-               <csomagszam>package_identifier</csomagszam>
-               <vonalkodPostfix>barcode_postfix</vonalkodPostfix>
-               <szallitasiIdo>delivery_deadline</szallitasiIdo>
-               </sprinter>
-               <mpl>
-               <vevokod>buyer_identifier</vevokod>
-               <vonalkod>barcode</vonalkod>
-               <tomeg>weight</tomeg>
-               <kulonszolgaltatasok>extra_services</kulonszolgaltatasok>
-               <erteknyilvanitas>value_statement</erteknyilvanitas>
-               </mpl>
+                 <uticel>destination</uticel>
+                 <futarSzolgalat>three_pl_provider</futarSzolgalat>
+                 <vonalkod>barcode</vonalkod>
+                 <megjegyzes>comment</megjegyzes>
+                 <tof>
+                   <azonosito>identifier</azonosito>
+                   <shipmentID>shipment_id</shipmentID>
+                   <csomagszam>package_identifier</csomagszam>
+                   <countryCode>country_code</countryCode>
+                   <zip>zip</zip>
+                   <service>service</service>
+                 </tof>
+                 <ppp>
+                   <vonalkodPrefix>barcode_prefix</vonalkodPrefix>
+                   <vonalkodPostfix>barcode_postfix</vonalkodPostfix>
+                 </ppp>
+                 <sprinter>
+                   <azonosito>identifier</azonosito>
+                   <feladokod>sender_identifier</feladokod>
+                   <iranykod>code_of_direction</iranykod>
+                   <csomagszam>package_identifier</csomagszam>
+                   <vonalkodPostfix>barcode_postfix</vonalkodPostfix>
+                   <szallitasiIdo>delivery_deadline</szallitasiIdo>
+                 </sprinter>
+                 <mpl>
+                   <vevokod>buyer_identifier</vevokod>
+                   <vonalkod>barcode</vonalkod>
+                   <tomeg>weight</tomeg>
+                   <kulonszolgaltatasok>extra_services</kulonszolgaltatasok>
+                   <erteknyilvanitas>value_statement</erteknyilvanitas>
+                 </mpl>
                </fuvarlevel>
                """
     end

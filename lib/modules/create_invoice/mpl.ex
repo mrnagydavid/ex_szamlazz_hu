@@ -20,20 +20,22 @@ defmodule ExSzamlazzHu.CreateInvoice.Waybill.MPL do
     struct(__MODULE__, params)
   end
 
+  def tag(), do: :mpl
+
+  def attrs(), do: nil
+
+  def content() do
+    [
+      :vevokod,
+      :vonalkod,
+      :tomeg,
+      :kulonszolgaltatasok,
+      :erteknyilvanitas
+    ]
+  end
+
   @spec to_xml(t()) :: String.t()
   def to_xml(%__MODULE__{} = module) do
-    tags = [
-      vevokod: &"<vevokod>#{&1}</vevokod>",
-      vonalkod: &"<vonalkod>#{&1}</vonalkod>",
-      tomeg: &"<tomeg>#{&1}</tomeg>",
-      kulonszolgaltatasok: &"<kulonszolgaltatasok>#{&1}</kulonszolgaltatasok>",
-      erteknyilvanitas: &"<erteknyilvanitas>#{&1}</erteknyilvanitas>"
-    ]
-
-    """
-    <mpl>
-    #{StructToXML.run(module, tags)}
-    </mpl>
-    """
+    StructToXML.convert(module)
   end
 end
