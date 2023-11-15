@@ -31,18 +31,19 @@ defmodule ExSzamlazzHu.CreateInvoice.SettingsTest do
              |> Settings.parse()
              |> Settings.to_xml() ==
                """
+               <?xml version="1.0" encoding="UTF-8"?>
                <beallitasok>
-               <felhasznalo>user</felhasznalo>
-               <jelszo>password</jelszo>
-               <szamlaagentkulcs>agent_key</szamlaagentkulcs>
-               <eszamla>true</eszamla>
-               <szamlaLetoltes>false</szamlaLetoltes>
-               <szamlaLetoltesPld>0</szamlaLetoltesPld>
-               <valaszVerzio>1</valaszVerzio>
-               <aggregator>aggregator</aggregator>
-               <guardian>false</guardian>
-               <cikkazoninvoice>false</cikkazoninvoice>
-               <szamlaKulsoAzon>external_invoice_identifier</szamlaKulsoAzon>
+                 <felhasznalo>user</felhasznalo>
+                 <jelszo>password</jelszo>
+                 <szamlaagentkulcs>agent_key</szamlaagentkulcs>
+                 <eszamla>true</eszamla>
+                 <szamlaLetoltes>false</szamlaLetoltes>
+                 <szamlaLetoltesPld>0</szamlaLetoltesPld>
+                 <valaszVerzio>1</valaszVerzio>
+                 <aggregator>aggregator</aggregator>
+                 <guardian>false</guardian>
+                 <cikkazoninvoice>false</cikkazoninvoice>
+                 <szamlaKulsoAzon>external_invoice_identifier</szamlaKulsoAzon>
                </beallitasok>
                """
     end

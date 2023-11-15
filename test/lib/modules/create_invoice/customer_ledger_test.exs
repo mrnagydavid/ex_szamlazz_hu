@@ -26,13 +26,14 @@ defmodule ExSzamlazzHu.CreateInvoice.CustomerLedgerTest do
              |> CustomerLedger.parse()
              |> CustomerLedger.to_xml() ==
                """
+               <?xml version="1.0" encoding="UTF-8"?>
                <vevoFokonyv>
-               <konyvelesDatum>accounting_date</konyvelesDatum>
-               <vevoAzonosito>customer_identifier</vevoAzonosito>
-               <vevoFokonyviSzam>ledger_number</vevoFokonyviSzam>
-               <folyamatosTelj>continuous_delivery</folyamatosTelj>
-               <elszDatumTol>settlement_date_from</elszDatumTol>
-               <elszDatumIg>settlement_date_to</elszDatumIg>
+                 <konyvelesDatum>accounting_date</konyvelesDatum>
+                 <vevoAzonosito>customer_identifier</vevoAzonosito>
+                 <vevoFokonyviSzam>ledger_number</vevoFokonyviSzam>
+                 <folyamatosTelj>continuous_delivery</folyamatosTelj>
+                 <elszDatumTol>settlement_date_from</elszDatumTol>
+                 <elszDatumIg>settlement_date_to</elszDatumIg>
                </vevoFokonyv>
                """
     end

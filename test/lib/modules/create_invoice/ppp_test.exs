@@ -22,9 +22,10 @@ defmodule ExSzamlazzHu.CreateInvoice.Waybill.PPPTest do
              |> PPP.parse()
              |> PPP.to_xml() ==
                """
+               <?xml version="1.0" encoding="UTF-8"?>
                <ppp>
-               <vonalkodPrefix>barcode_prefix</vonalkodPrefix>
-               <vonalkodPostfix>barcode_postfix</vonalkodPostfix>
+                 <vonalkodPrefix>barcode_prefix</vonalkodPrefix>
+                 <vonalkodPostfix>barcode_postfix</vonalkodPostfix>
                </ppp>
                """
     end

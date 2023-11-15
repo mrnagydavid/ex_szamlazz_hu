@@ -26,13 +26,14 @@ defmodule ExSzamlazzHu.CreateInvoice.Waybill.SprinterTest do
              |> Sprinter.parse()
              |> Sprinter.to_xml() ==
                """
+               <?xml version="1.0" encoding="UTF-8"?>
                <sprinter>
-               <azonosito>identifier</azonosito>
-               <feladokod>sender_identifier</feladokod>
-               <iranykod>code_of_direction</iranykod>
-               <csomagszam>package_identifier</csomagszam>
-               <vonalkodPostfix>barcode_postfix</vonalkodPostfix>
-               <szallitasiIdo>delivery_deadline</szallitasiIdo>
+                 <azonosito>identifier</azonosito>
+                 <feladokod>sender_identifier</feladokod>
+                 <iranykod>code_of_direction</iranykod>
+                 <csomagszam>package_identifier</csomagszam>
+                 <vonalkodPostfix>barcode_postfix</vonalkodPostfix>
+                 <szallitasiIdo>delivery_deadline</szallitasiIdo>
                </sprinter>
                """
     end

@@ -21,21 +21,23 @@ defmodule ExSzamlazzHu.CreateInvoice.Seller do
     struct(__MODULE__, params)
   end
 
+  def tag(), do: :elado
+
+  def attrs(), do: nil
+
+  def content() do
+    [
+      :bank,
+      :bankszamlaszam,
+      :emailReplyto,
+      :emailTargy,
+      :emailSzoveg,
+      :alairoNeve
+    ]
+  end
+
   @spec to_xml(t()) :: String.t()
   def to_xml(%__MODULE__{} = module) do
-    tags = [
-      bank: &"<bank>#{&1}</bank>",
-      bankszamlaszam: &"<bankszamlaszam>#{&1}</bankszamlaszam>",
-      emailReplyto: &"<emailReplyto>#{&1}</emailReplyto>",
-      emailTargy: &"<emailTargy>#{&1}</emailTargy>",
-      emailSzoveg: &"<emailSzoveg>#{&1}</emailSzoveg>",
-      alairoNeve: &"<alairoNeve>#{&1}</alairoNeve>"
-    ]
-
-    """
-    <elado>
-    #{StructToXML.run(module, tags)}
-    </elado>
-    """
+    StructToXML.convert(module)
   end
 end

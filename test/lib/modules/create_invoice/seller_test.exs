@@ -26,13 +26,14 @@ defmodule ExSzamlazzHu.CreateInvoice.SellerTest do
              |> Seller.parse()
              |> Seller.to_xml() ==
                """
+               <?xml version="1.0" encoding="UTF-8"?>
                <elado>
-               <bank>bank</bank>
-               <bankszamlaszam>bank_account_number</bankszamlaszam>
-               <emailReplyto>email_reply_to</emailReplyto>
-               <emailTargy>email_subject</emailTargy>
-               <emailSzoveg>email_text</emailSzoveg>
-               <alairoNeve>name_of_signatory</alairoNeve>
+                 <bank>bank</bank>
+                 <bankszamlaszam>bank_account_number</bankszamlaszam>
+                 <emailReplyto>email_reply_to</emailReplyto>
+                 <emailTargy>email_subject</emailTargy>
+                 <emailSzoveg>email_text</emailSzoveg>
+                 <alairoNeve>name_of_signatory</alairoNeve>
                </elado>
                """
     end

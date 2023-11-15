@@ -40,27 +40,29 @@ defmodule ExSzamlazzHu.CreateInvoice.Items.Item do
     |> Map.put(:tetelFokonyv, ItemLedger.parse(params[:tetelFokonyv]))
   end
 
+  def tag(), do: :tetel
+
+  def attrs(), do: nil
+
+  def content() do
+    [
+      :megnevezes,
+      :azonosito,
+      :mennyiseg,
+      :mennyisegiEgyseg,
+      :nettoEgysegar,
+      :afakulcs,
+      :arresAfaAlap,
+      :nettoErtek,
+      :afaErtek,
+      :bruttoErtek,
+      :megjegyzes,
+      :tetelFokonyv
+    ]
+  end
+
   @spec to_xml(t()) :: String.t()
   def to_xml(%__MODULE__{} = module) do
-    tags = [
-      megnevezes: &"<megnevezes>#{&1}</megnevezes>",
-      azonosito: &"<azonosito>#{&1}</azonosito>",
-      mennyiseg: &"<mennyiseg>#{&1}</mennyiseg>",
-      mennyisegiEgyseg: &"<mennyisegiEgyseg>#{&1}</mennyisegiEgyseg>",
-      nettoEgysegar: &"<nettoEgysegar>#{&1}</nettoEgysegar>",
-      afakulcs: &"<afakulcs>#{&1}</afakulcs>",
-      arresAfaAlap: &"<arresAfaAlap>#{&1}</arresAfaAlap>",
-      nettoErtek: &"<nettoErtek>#{&1}</nettoErtek>",
-      afaErtek: &"<afaErtek>#{&1}</afaErtek>",
-      bruttoErtek: &"<bruttoErtek>#{&1}</bruttoErtek>",
-      megjegyzes: &"<megjegyzes>#{&1}</megjegyzes>",
-      tetelFokonyv: &ItemLedger.to_xml(&1)
-    ]
-
-    """
-    <tetel>
-    #{StructToXML.run(module, tags)}
-    </tetel>
-    """
+    StructToXML.convert(module)
   end
 end

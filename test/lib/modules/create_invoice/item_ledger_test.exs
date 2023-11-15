@@ -26,13 +26,14 @@ defmodule ExSzamlazzHu.CreateInvoice.ItemLedgerTest do
              |> ItemLedger.parse()
              |> ItemLedger.to_xml() ==
                """
+               <?xml version="1.0" encoding="UTF-8"?>
                <tetelFokonyv>
-               <gazdasagiEsem>economic_event</gazdasagiEsem>
-               <gazdasagiEsemAfa>economic_event_vat</gazdasagiEsemAfa>
-               <arbevetelFokonyviSzam>income_ledger_number</arbevetelFokonyviSzam>
-               <afaFokonyviSzam>vat_ledger_number</afaFokonyviSzam>
-               <elszDatumTol>settlement_date_from</elszDatumTol>
-               <elszDatumIg>settlement_date_to</elszDatumIg>
+                 <gazdasagiEsem>economic_event</gazdasagiEsem>
+                 <gazdasagiEsemAfa>economic_event_vat</gazdasagiEsemAfa>
+                 <arbevetelFokonyviSzam>income_ledger_number</arbevetelFokonyviSzam>
+                 <afaFokonyviSzam>vat_ledger_number</afaFokonyviSzam>
+                 <elszDatumTol>settlement_date_from</elszDatumTol>
+                 <elszDatumIg>settlement_date_to</elszDatumIg>
                </tetelFokonyv>
                """
     end

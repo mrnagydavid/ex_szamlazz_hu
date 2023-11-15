@@ -25,26 +25,28 @@ defmodule ExSzamlazzHu.CreateInvoice.Settings do
     struct(__MODULE__, params)
   end
 
+  def tag(), do: :beallitasok
+
+  def attrs(), do: nil
+
+  def content() do
+    [
+      :felhasznalo,
+      :jelszo,
+      :szamlaagentkulcs,
+      :eszamla,
+      :szamlaLetoltes,
+      :szamlaLetoltesPld,
+      :valaszVerzio,
+      :aggregator,
+      :guardian,
+      :cikkazoninvoice,
+      :szamlaKulsoAzon
+    ]
+  end
+
   @spec to_xml(t()) :: String.t()
   def to_xml(%__MODULE__{} = module) do
-    tags = [
-      felhasznalo: &"<felhasznalo>#{&1}</felhasznalo>",
-      jelszo: &"<jelszo>#{&1}</jelszo>",
-      szamlaagentkulcs: &"<szamlaagentkulcs>#{&1}</szamlaagentkulcs>",
-      eszamla: &"<eszamla>#{&1}</eszamla>",
-      szamlaLetoltes: &"<szamlaLetoltes>#{&1}</szamlaLetoltes>",
-      szamlaLetoltesPld: &"<szamlaLetoltesPld>#{&1}</szamlaLetoltesPld>",
-      valaszVerzio: &"<valaszVerzio>#{&1}</valaszVerzio>",
-      aggregator: &"<aggregator>#{&1}</aggregator>",
-      guardian: &"<guardian>#{&1}</guardian>",
-      cikkazoninvoice: &"<cikkazoninvoice>#{&1}</cikkazoninvoice>",
-      szamlaKulsoAzon: &"<szamlaKulsoAzon>#{&1}</szamlaKulsoAzon>"
-    ]
-
-    """
-    <beallitasok>
-    #{StructToXML.run(module, tags)}
-    </beallitasok>
-    """
+    StructToXML.convert(module)
   end
 end

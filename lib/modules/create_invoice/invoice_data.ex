@@ -32,26 +32,28 @@ defmodule ExSzamlazzHu.CreateInvoice.InvoiceData do
     }
   end
 
+  def tag(), do: :xmlszamla
+
+  def attrs(),
+    do: %{
+      "xmlns" => "http://www.szamlazz.hu/xmlszamla",
+      "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
+      "xsi:schemaLocation" => "http://www.szamlazz.hu/xmlszamla https://www.szamlazz.hu/szamla/docs/xsds/agent/xmlszamla.xsd"
+    }
+
+  def content() do
+    [
+      :beallitasok,
+      :fejlec,
+      :elado,
+      :vevo,
+      :fuvarlevel,
+      :tetelek
+    ]
+  end
+
   @spec to_xml(t()) :: String.t()
   def to_xml(%__MODULE__{} = module) do
-    tags = [
-      beallitasok: &Settings.to_xml(&1),
-      fejlec: &Header.to_xml(&1),
-      elado: &Seller.to_xml(&1),
-      vevo: &Customer.to_xml(&1),
-      fuvarlevel: &Waybill.to_xml(&1),
-      tetelek: &Items.to_xml(&1)
-    ]
-
-    """
-    <?xml version="1.0" encoding="UTF-8"?>
-    <xmlszamla
-      xmlns="http://www.szamlazz.hu/xmlszamla"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.szamlazz.hu/xmlszamla https://www.szamlazz.hu/szamla/docs/xsds/agent/xmlszamla.xsd"
-    >
-    #{StructToXML.run(module, tags)}
-    </xmlszamla>
-    """
+    StructToXML.convert(module)
   end
 end
