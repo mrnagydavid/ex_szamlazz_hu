@@ -1,48 +1,46 @@
 defmodule ExSzamlazzHu.Utils.StructToXML do
   @moduledoc false
 
-  def convert(module, top_level \\ true) do
-    tag = module.__struct__.tag()
-    attributes = module.__struct__.attrs()
-    content = module.__struct__.content()
-    convert(module, tag, attributes, content, top_level)
+  def convert(module) do
+    xml_builder_structure = convert_to_xml_builder_structure(module)
+    xml_builder_doc = XmlBuilder.document(xml_builder_structure)
+    XmlBuilder.generate(xml_builder_doc) <> "\n"
   end
 
-  def convert(module, tag, attributes, content, top_level \\ true) do
+  defp convert_to_xml_builder_structure(module) do
+    struct = module.__struct__
+    tag = struct.tag()
+    attrs = struct.attrs()
+
     content =
-      content
-      |> Enum.map(&get_value_for_tag(module, &1))
-      |> Enum.reject(&tag_empty?/1)
-      |> Enum.map(&create_xml_element_from_content/1)
+      module
+      |> struct.content()
+      |> map_to_tuples_of_tag_and_content(module)
+      |> reject_empty_tags()
+      |> convert_to_xml_elements()
 
-    if top_level do
-      doc = XmlBuilder.document(tag, attributes, content)
-      XmlBuilder.generate(doc) <> "\n"
-    else
-      XmlBuilder.element(tag, attributes, content)
-    end
+    XmlBuilder.element(tag, attrs, content)
   end
 
-  defp get_value_for_tag(module, tag) when is_atom(tag), do: {tag, nil, Map.get(module, tag)}
-  defp get_value_for_tag(_, other), do: other
-
-  defp tag_empty?({_, _, value}) when is_nil(value), do: true
-  defp tag_empty?(_), do: false
-
-  defp create_xml_element_from_content(struct) when is_struct(struct) do
-    convert(struct, false)
+  defp map_to_tuples_of_tag_and_content(content, module) do
+    Enum.map(content, fn value ->
+      case value do
+        submodule when is_struct(submodule) -> {nil, submodule}
+        tag when is_atom(tag) -> {tag, Map.get(module, tag)}
+      end
+    end)
   end
 
-  defp create_xml_element_from_content({_, _, struct}) when is_struct(struct) do
-    convert(struct, false)
+  defp reject_empty_tags(content) do
+    Enum.reject(content, fn {_tag, content} -> is_nil(content) end)
   end
 
-  defp create_xml_element_from_content({tag, attrs, list}) when is_list(list) do
-    value = Enum.map(list, fn struct -> create_xml_element_from_content(struct) end)
-    XmlBuilder.element(tag, attrs, value)
-  end
-
-  defp create_xml_element_from_content({tag, attrs, value}) do
-    XmlBuilder.element(tag, attrs, value)
+  defp convert_to_xml_elements(contents) do
+    Enum.map(contents, fn {tag, content} ->
+      case content do
+        submodule when is_struct(submodule) -> convert_to_xml_builder_structure(submodule)
+        value -> XmlBuilder.element(tag, nil, value)
+      end
+    end)
   end
 end

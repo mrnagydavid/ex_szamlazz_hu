@@ -21,7 +21,7 @@ defmodule ExSzamlazzHu.CreateInvoice.Waybill.PPP do
 
   def attrs(), do: nil
 
-  def content() do
+  def content(_) do
     [
       :vonalkodPrefix,
       :vonalkodPostfix

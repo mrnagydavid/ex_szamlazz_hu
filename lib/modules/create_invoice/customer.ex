@@ -49,7 +49,7 @@ defmodule ExSzamlazzHu.CreateInvoice.Customer do
 
   def attrs(), do: nil
 
-  def content() do
+  def content(_) do
     [
       :nev,
       :orszag,

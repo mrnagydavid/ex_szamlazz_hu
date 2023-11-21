@@ -25,7 +25,7 @@ defmodule ExSzamlazzHu.CreateInvoice.Items.Item.ItemLedger do
 
   def attrs(), do: nil
 
-  def content() do
+  def content(_) do
     [
       :gazdasagiEsem,
       :gazdasagiEsemAfa,

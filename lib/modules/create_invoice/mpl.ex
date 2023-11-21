@@ -24,7 +24,7 @@ defmodule ExSzamlazzHu.CreateInvoice.Waybill.MPL do
 
   def attrs(), do: nil
 
-  def content() do
+  def content(_) do
     [
       :vevokod,
       :vonalkod,

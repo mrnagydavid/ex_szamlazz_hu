@@ -7,22 +7,24 @@ defmodule ExSzamlazzHu.CreateInvoice.ItemsTest do
 
   describe "parse/1" do
     test "should parse a valid Item list" do
-      assert Items.parse(params()) == [
-               %Item{
-                 megnevezes: "name",
-                 azonosito: "identifier",
-                 mennyiseg: "1.5",
-                 mennyisegiEgyseg: "unit",
-                 nettoEgysegar: "net_unit_price",
-                 afakulcs: "27",
-                 arresAfaAlap: "margin_vat_base",
-                 nettoErtek: "100",
-                 afaErtek: "27",
-                 bruttoErtek: "127",
-                 megjegyzes: "comment",
-                 tetelFokonyv: nil
-               }
-             ]
+      assert Items.parse(params()) == %Items{
+               tetelek: [
+                 %Item{
+                   megnevezes: "name",
+                   azonosito: "identifier",
+                   mennyiseg: "1.5",
+                   mennyisegiEgyseg: "unit",
+                   nettoEgysegar: "net_unit_price",
+                   afakulcs: "27",
+                   arresAfaAlap: "margin_vat_base",
+                   nettoErtek: "100",
+                   afaErtek: "27",
+                   bruttoErtek: "127",
+                   megjegyzes: "comment",
+                   tetelFokonyv: nil
+                 }
+               ]
+             }
     end
 
     test "should parse an empty Item list" do

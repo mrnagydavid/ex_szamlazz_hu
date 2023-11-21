@@ -25,7 +25,7 @@ defmodule ExSzamlazzHu.CreateInvoice.Waybill.Transoflex do
 
   def attrs(), do: nil
 
-  def content() do
+  def content(_) do
     [
       :azonosito,
       :shipmentID,
