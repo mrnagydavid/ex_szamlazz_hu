@@ -25,7 +25,7 @@ defmodule ExSzamlazzHu.CreateInvoice.Seller do
 
   def attrs(), do: nil
 
-  def content() do
+  def content(_) do
     [
       :bank,
       :bankszamlaszam,

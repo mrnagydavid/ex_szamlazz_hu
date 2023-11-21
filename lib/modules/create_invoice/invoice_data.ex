@@ -41,7 +41,7 @@ defmodule ExSzamlazzHu.CreateInvoice.InvoiceData do
       "xsi:schemaLocation" => "http://www.szamlazz.hu/xmlszamla https://www.szamlazz.hu/szamla/docs/xsds/agent/xmlszamla.xsd"
     }
 
-  def content() do
+  def content(_) do
     [
       :beallitasok,
       :fejlec,

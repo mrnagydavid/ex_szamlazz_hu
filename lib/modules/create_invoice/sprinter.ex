@@ -25,7 +25,7 @@ defmodule ExSzamlazzHu.CreateInvoice.Waybill.Sprinter do
 
   def attrs(), do: nil
 
-  def content() do
+  def content(_) do
     [
       :azonosito,
       :feladokod,

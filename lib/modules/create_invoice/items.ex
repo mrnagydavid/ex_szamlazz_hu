@@ -4,23 +4,26 @@ defmodule ExSzamlazzHu.CreateInvoice.Items do
   alias ExSzamlazzHu.CreateInvoice.Items.Item
   alias ExSzamlazzHu.Utils.StructToXML
 
-  defstruct []
+  defstruct [
+    :tetelek
+  ]
 
   def parse(nil), do: []
 
   def parse(params) do
-    Enum.map(params, &Item.parse/1)
+    items = Enum.map(params, &Item.parse/1)
+    Map.put(%__MODULE__{}, :tetelek, items)
   end
 
   def tag(), do: :tetelek
 
   def attrs(), do: nil
 
-  def content(items) do
-    items
+  def content(%__MODULE__{} = module) do
+    module.tetelek
   end
 
-  def to_xml(items) do
-    StructToXML.convert(%__MODULE__{}, tag(), attrs(), items)
+  def to_xml(%__MODULE__{} = module) do
+    StructToXML.convert(module)
   end
 end

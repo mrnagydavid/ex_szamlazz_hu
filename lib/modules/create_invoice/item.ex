@@ -44,7 +44,7 @@ defmodule ExSzamlazzHu.CreateInvoice.Items.Item do
 
   def attrs(), do: nil
 
-  def content() do
+  def content(_) do
     [
       :megnevezes,
       :azonosito,

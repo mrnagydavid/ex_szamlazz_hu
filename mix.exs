@@ -37,7 +37,8 @@ defmodule ExSzamlazzHu.MixProject do
       {:ex_doc, "~> 0.29.4", only: :dev},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.3", only: [:dev, :test], runtime: false},
-      {:faker, "~> 0.17", only: [:test]}
+      {:faker, "~> 0.17", only: [:test]},
+      {:mix_test_watch, "~> 1.1", only: [:dev, :test], runtime: false}
     ]
   end
 

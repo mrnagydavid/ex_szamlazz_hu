@@ -36,7 +36,7 @@ defmodule ExSzamlazzHu.CreateInvoice.Waybill do
 
   def attrs(), do: nil
 
-  def content() do
+  def content(_) do
     [
       :uticel,
       :futarSzolgalat,

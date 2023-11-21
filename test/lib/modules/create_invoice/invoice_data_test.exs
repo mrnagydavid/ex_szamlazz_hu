@@ -7,6 +7,7 @@ defmodule ExSzamlazzHu.CreateInvoice.InvoiceDataTest do
   alias ExSzamlazzHu.CreateInvoice.Seller
   alias ExSzamlazzHu.CreateInvoice.Waybill
   alias ExSzamlazzHu.CreateInvoice.Waybill.MPL
+  alias ExSzamlazzHu.CreateInvoice.Items
   alias ExSzamlazzHu.CreateInvoice.Items.Item
   alias ExSzamlazzHu.Factories.InvoiceDataFactory
   alias ExSzamlazzHu.Factories.HeaderFactory
@@ -110,22 +111,24 @@ defmodule ExSzamlazzHu.CreateInvoice.InvoiceDataTest do
                      erteknyilvanitas: "value_statement"
                    }
                  },
-                 tetelek: [
-                   %Item{
-                     megnevezes: "name",
-                     azonosito: "identifier",
-                     mennyiseg: "1.5",
-                     mennyisegiEgyseg: "unit",
-                     nettoEgysegar: "net_unit_price",
-                     afakulcs: "27",
-                     arresAfaAlap: "margin_vat_base",
-                     nettoErtek: "100",
-                     afaErtek: "27",
-                     bruttoErtek: "127",
-                     megjegyzes: "comment",
-                     tetelFokonyv: nil
-                   }
-                 ]
+                 tetelek: %Items{
+                   tetelek: [
+                     %Item{
+                       megnevezes: "name",
+                       azonosito: "identifier",
+                       mennyiseg: "1.5",
+                       mennyisegiEgyseg: "unit",
+                       nettoEgysegar: "net_unit_price",
+                       afakulcs: "27",
+                       arresAfaAlap: "margin_vat_base",
+                       nettoErtek: "100",
+                       afaErtek: "27",
+                       bruttoErtek: "127",
+                       megjegyzes: "comment",
+                       tetelFokonyv: nil
+                     }
+                   ]
+                 }
                }
     end
   end
