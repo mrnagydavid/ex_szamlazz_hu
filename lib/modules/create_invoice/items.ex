@@ -19,11 +19,11 @@ defmodule ExSzamlazzHu.CreateInvoice.Items do
 
   def attrs(), do: nil
 
-  def content(module = %__MODULE__{}) do
+  def content(%__MODULE__{} = module) do
     module.tetelek
   end
 
-  def to_xml(module = %__MODULE__{}) do
+  def to_xml(%__MODULE__{} = module) do
     StructToXML.convert(module)
   end
 end
