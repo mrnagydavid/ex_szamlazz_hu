@@ -2,9 +2,11 @@ defmodule ExSzamlazzHu.Utils.StructToXML do
   @moduledoc false
 
   def convert(module) do
-    xml_builder_structure = convert_to_xml_builder_structure(module)
-    xml_builder_doc = XmlBuilder.document(xml_builder_structure)
-    XmlBuilder.generate(xml_builder_doc) <> "\n"
+    module
+    |> convert_to_xml_builder_structure()
+    |> XmlBuilder.document()
+    |> XmlBuilder.generate()
+    |> Kernel.<>("\n")
   end
 
   defp convert_to_xml_builder_structure(module) do
