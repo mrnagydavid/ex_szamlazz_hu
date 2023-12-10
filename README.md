@@ -132,7 +132,7 @@ The result of the call is a struct, which - among other things - contains the or
   szlahu_nettovegosszeg: nil,   # The net amount of the created invoice
   szlahu_bruttovegosszeg: nil,  # The gross amount of the created invoice
   szlahu_kintlevoseg: nil,      # The amount not yet paid
-  szlahu_vevoifiokurl: nil,     # The URL of the invoice
+  szlahu_vevoifiokurl: nil,     # The URL of the invoice - ExSzamlazzHu decodes the percent-escaped string sent by Szamlazz.hu
   szlahu_error: nil,            # The error message, if any (and in Hungarian)
   szlahu_error_code: nil,       # The error code
   szlahu_down: false            # Indicates whether the Szamlazz.hu API is not available
