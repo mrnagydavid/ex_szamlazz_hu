@@ -2,7 +2,7 @@ defmodule ExSzamlazzHu.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/mrnagydavid/ex_szamlazz_hu"
-  @version "0.1.0"
+  @version "0.1.1"
 
   def project do
     [
@@ -53,7 +53,7 @@ defmodule ExSzamlazzHu.MixProject do
 
   defp package do
     [
-      maintainers: ["David Nagy", "Mikhail Alekseev"],
+      maintainers: ["David Nagy"],
       licenses: ["MIT"],
       links: %{GitHub: @source_url},
       description: description()

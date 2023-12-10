@@ -41,7 +41,7 @@ The package can be installed by adding `ex_szamlazz_hu` to your list of dependen
 ```elixir
 def deps do
   [
-    {:ex_szamlazz_hu, "~> 0.1.0"}
+    {:ex_szamlazz_hu, "~> 0.1.1"}
   ]
 end
 ```
