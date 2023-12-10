@@ -31,7 +31,7 @@ defmodule ExSzamlazzHu.MixProject do
 
   defp deps do
     [
-      {:tesla, "== 1.8.0"},
+      {:tesla, ">= 1.5.0"},
       {:xml_builder, "== 2.2.0"},
       {:hackney, "== 1.20.1", only: [:dev, :test]},
       {:ex_doc, "~> 0.29.4", only: :dev},
