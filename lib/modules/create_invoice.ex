@@ -61,13 +61,15 @@ defmodule ExSzamlazzHu.CreateInvoice do
   defp handle_success_response(%Tesla.Env{} = response, invoice_data) do
     header_map = Map.new(response.headers)
 
+    szlahu_vevoifiokurl = URI.decode(header_map["szlahu_vevoifiokurl"])
+
     params = %{
       szlahu_id: header_map["szlahu_id"],
       szlahu_nettovegosszeg: header_map["szlahu_nettovegosszeg"],
       szlahu_szamlaszam: header_map["szlahu_szamlaszam"],
       szlahu_bruttovegosszeg: header_map["szlahu_bruttovegosszeg"],
       szlahu_kintlevoseg: header_map["szlahu_kintlevoseg"],
-      szlahu_vevoifiokurl: header_map["szlahu_vevoifiokurl"]
+      szlahu_vevoifiokurl: szlahu_vevoifiokurl
     }
 
     result = maybe_add_invoice_path_info(params, response, invoice_data)

@@ -26,6 +26,9 @@ defmodule ExSzamlazzHu.CreateInvoiceTest do
       assert result.szlahu_error == nil
       assert result.szlahu_error_code == nil
       assert result.szlahu_down == false
+
+      unescaped_szlahu_vevoifiokurl = URI.decode(result.szlahu_vevoifiokurl)
+      assert unescaped_szlahu_vevoifiokurl == result.szlahu_vevoifiokurl
     end
 
     test "should successfully create an invoice and save the invoice pdf locally when the response type is xml" do
